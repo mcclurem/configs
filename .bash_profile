@@ -18,6 +18,7 @@ if [ "$(which keychain 2>/dev/null)" ]; then
 fi
 
 if [ "$DISPLAY" ]; then
+	
 	if [ "$(which tpb 2>/dev/null)" ]; then
 		tpb -d &
 	fi
