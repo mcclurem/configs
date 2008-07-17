@@ -13,14 +13,16 @@ export PATH
 unset USERNAME
 
 # If we have keychain then we rock
-if [ "$(which keychain 2>/dev/null)" ];then
+if [ "$(which keychain 2>/dev/null)" ]; then
 	eval `keychain --ignore-missing -q --eval ~/.ssh/id_rsa ~/.ssh/id_dsa`
 fi
 
-if [ "$(which tpb 2>/dev/null)" ];then
-	tpb -d &
+if [ "$DISPLAY" ]; then
+	if [ "$(which tpb 2>/dev/null)" ]; then
+		tpb -d &
+	fi
+	#set defaluts for x crap
+	xrdb -load ~/.Xresources
 fi
 
-#set defaluts for x crap
-#xrdb -load ~/.Xresources
 
