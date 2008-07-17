@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FILES=`ls -A ./|grep -v "\.svn"`
+FILES=`ls -A ./|grep -v "\.svn"|grep -v "setup.sh"`
 echo $FILES;
 for FILE in $FILES
 do
@@ -16,13 +16,14 @@ do
 			continue
 	fi
 
-	if [ -f "$HOME/$FILE" ] && ![ `diff "$PWD/$FILE" "$HOME/$FILE"` ]; then
+	if [ -f "$HOME/$FILE" ]; then
 			echo -e "The file $FILE already exists but I didn't see any differences so I went ahead and replaced it with a symlink"
 			rm "$HOME/$FILE"
 			ln -s "$PWD/$FILE" "$HOME/$FILE"
 			continue
 	fi
 
+	echo -e "I don't think anything existed so I'm adding $FILE"
 	ln -s "$PWD/$FILE" "$HOME/$FILE"
 
 done
