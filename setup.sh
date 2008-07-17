@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [ $1 == 'update' ]; then
+		svn update
+		exit 0
+fi
+
+
 FILES=`ls -A ./|grep -v "\.svn"|grep -v "setup.sh"`
 echo $FILES;
 for FILE in $FILES
