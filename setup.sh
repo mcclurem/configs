@@ -15,14 +15,14 @@ do
 			continue
 	fi
 
-	if [ -f "$HOME/$FILE" ] && [ `diff "$PWD/$FILE" "$HOME/$FILE"|head -n1` ]; then
+	if [ -e "$HOME/$FILE" ] && [ `diff "$PWD/$FILE" "$HOME/$FILE"|head -n1` ]; then
 			#file already exists its up to you to fix it
 			echo -e "The file $FILE already exists, here is the difference:"
 			diff "$PWD/$FILE" "$HOME/$FILE"
 			continue
 	fi
 
-	if [ -f "$HOME/$FILE" ]; then
+	if [ -e "$HOME/$FILE" ]; then
 			echo -e "The file $FILE already exists but I didn't see any differences so I went ahead and replaced it with a symlink"
 			rm "$HOME/$FILE"
 			ln -s "$PWD/$FILE" "$HOME/$FILE"
