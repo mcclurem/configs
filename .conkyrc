@@ -161,10 +161,10 @@ $freq
 ${color green}RAM:  $memperc% ${membar 8}
 ${color purple}Swap: $swapperc%  ${swapbar 8}
 ${color orange}CPU:  ${cpu}%  ${cpubar 8}
-${color red}${cpugraph ff0000 0000ff}
+${color red}${cpugraph normal ff0000 0000ff}
 ${color}${hr}
 ${color}Disk:	${diskio}$alignc${color red} C  C
-${color}${diskiograph ff0000 0000ff}
+${color}${diskiograph normal ff0000 0000ff}
 ${color}Root: ${fs_used /}/${fs_size /} ${color blue}$alignr(${fs_free /} ${fs_free_perc /}% free)
 ${color orange}       ${fs_bar /}
 ${if_mounted /boot}${color}Boot: ${fs_used /boot/}/${fs_size /boot/} ${color blue}$alignr(${fs_free /boot/} ${fs_free_perc /boot/}% free)
@@ -175,8 +175,8 @@ ${color}$hr
 ${color}Networking:
 eth0 = ${addr eth0}${alignr}
  Up/Down:${color #8844ee} ${upspeed eth0} ${downspeed eth0} k/s${color lightgrey} ${offset 80}Up/Down:${color #22ccff} ${upspeed eth1} ${downspeed eth1} k/s
-${color #0000ff}${upspeedgraph eth0  32,200 ff0000 0000ff}
-${color #0000ff}${downspeedgraph eth0 32,200 ff0000 0000ff}
+${color #0000ff}${upspeedgraph normal eth0  32,200 ff0000 0000ff}
+${color #0000ff}${downspeedgraph normal eth0 32,200 ff0000 0000ff}
 ${color}$hr
 ${color orange}Service:${alignr}Status${color}
  ${color green}ACPID${alignr}${if_running acpid}${color green}Running${else}${color red}Stopped${endif}
