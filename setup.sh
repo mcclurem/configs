@@ -1,12 +1,14 @@
 #!/bin/bash
 
+
+
 if [ $# != 0 ] && [ $1 == "update" ]; then
 		svn update
 		exit 0
 fi
 
-
-FILES=`ls -A ./|grep -v "\.svn"|grep -v "setup.sh"`
+CONFDIR="$HOME/configs"
+FILES=`ls -A $CONFDIR|grep -v "\.svn"|grep -v "setup.sh"`
 echo $FILES;
 for FILE in $FILES
 do
@@ -15,21 +17,21 @@ do
 			continue
 	fi
 
-	if [ -e "$HOME/$FILE" ] && [ `diff "$PWD/$FILE" "$HOME/$FILE"|head -n1` ]; then
+	if [ -f "$HOME/$FILE" ] && [ `diff "$CONFDIR/$FILE" "$HOME/$FILE"|head -n1` ]; then
 			#file already exists its up to you to fix it
 			echo -e "The file $FILE already exists, here is the difference:"
-			diff "$PWD/$FILE" "$HOME/$FILE"
+			diff "$CONFDIR/$FILE" "$HOME/$FILE"
 			continue
 	fi
 
-	if [ -e "$HOME/$FILE" ]; then
+	if [ -f "$HOME/$FILE" ]; then
 			echo -e "The file $FILE already exists but I didn't see any differences so I went ahead and replaced it with a symlink"
 			rm "$HOME/$FILE"
-			ln -s "$PWD/$FILE" "$HOME/$FILE"
+			ln -s "$CONFDIR/$FILE" "$HOME/$FILE"
 			continue
 	fi
 
 	echo -e "I don't think anything existed so I'm adding $FILE"
-	ln -s "$PWD/$FILE" "$HOME/$FILE"
+	ln -s "$CONFDIR/$FILE" "$HOME/$FILE"
 
 done
