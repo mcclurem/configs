@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ $1 == 'update' ]; then
+if [ $# != 0 ] && [ $1 == "update" ]; then
 		svn update
 		exit 0
 fi
