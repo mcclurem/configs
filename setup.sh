@@ -9,7 +9,7 @@ do
 			continue
 	fi
 
-	if [ -f "$HOME/$FILE" ] && [ `diff "$PWD/$FILE" "$HOME/$FILE"` ]; then
+	if [ -f "$HOME/$FILE" ] && [ `diff "$PWD/$FILE" "$HOME/$FILE"|head 1` ]; then
 			#file already exists its up to you to fix it
 			echo -e "The file $FILE already exists, here is the difference:"
 			diff "$PWD/$FILE" "$HOME/$FILE"
