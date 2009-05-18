@@ -13,7 +13,10 @@ fi
 
 # History crap
 HISTCONTROL=ignoredups
+HISTIGNORE=clear:ls
 export HISTCONTROL
+export HISTIGNORE
+
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
