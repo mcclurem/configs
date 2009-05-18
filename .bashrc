@@ -32,7 +32,13 @@ if [ -f ~/.bash_prompt ]; then
 	PS1='$PWD > '
 fi
 # Bash Completion
-source /etc/bash_completion
+if [ -f /etc/bash_completion ]; then
+	source /etc/bash_completion
+fi
+
+if [ -f /etc/profile.d/bash-completion.sh ]; then
+	source /etc/profile.d/bash-completion.sh
+fi
 
 # .plan (for finger)
 echo -e "Home Phone:    978-448-6288\nCell Phone:    978-400-6980\n-----\n`uname -o` `uname -rp`\n`uname -n`"> ~/.plan
