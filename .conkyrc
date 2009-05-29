@@ -180,7 +180,7 @@ ${color}${alignc}Fan Speed ${ibm_fan} RPM
 ${color}$hr
 ${color}Networking:
 eth0 = ${addr eth0}${alignr}wlan0 = ${addr wlan0}
- Up/Down:${color #8844ee} ${upspeed eth0} ${downspeed eth0} k/s${color lightgrey} ${offset 80}Up/Down:${color #22ccff} ${upspeed wlan0} ${downspeed wlan0} k/s
+ Up/Down:${color #8844ee} ${upspeed eth0} ${downspeed eth0} ${color lightgrey} ${offset 80}Up/Down:${color #22ccff} ${upspeed wlan0} ${downspeed wlan0}
 ${color #0000ff}${upspeedgraph eth0  32,200 ff0000 0000ff} $alignr${color #22ccff}${upspeedgraph wlan0 32,200 0000ff ff0000}
 ${color #0000ff}${downspeedgraph eth0 32,200 ff0000 0000ff} $alignr${color #22ccff}${downspeedgraph wlan0 32,200 0000ff ff0000}
 ${color}$hr
