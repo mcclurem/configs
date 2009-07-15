@@ -7,48 +7,38 @@ if [ $# != 0 ] && [ $1 == "update" ]; then
 		exit 0
 fi
 
-CONFFOLD="configs"
-CONFDIR="$HOME/$CONFFOLD"
+CONFDIR="$HOME/configs"
 FILES=`ls -A $CONFDIR|grep -v "\.svn"|grep -v "setup.sh"`
 echo $FILES;
 for FILE in $FILES
 do
 #Specific stuff for the auth key file:
 	if [ $FILE == 'authorized_keys' ]; then
+		#symlink exists:
+		if [ -L "$HOME/.ssh/authorized_keys" ]; then
+			echo "Simlink for authorized_keys already existed, skipping ..."
+			continue
+		fi
 		#We already have a file there
-		if [ -f "$HOME/.ssh/authorized_keys" ];
-		then
-			#If there are differences:
-			if [ `diff "$HOME/.ssh/authorized_keys" "$CONFDIR/authorized_keys"|head -n1` ];
-			then
+		if [ -f "$HOME/.ssh/authorized_keys" ] && [ `diff "$HOME/.ssh/authorized_keys" "$CONFDIR/authorized_keys"|head -n1` ]; then
 				echo -e "The file $FILE already exists, here is the difference:"
 				diff "$HOME/.ssh/authorized_keys" "$CONFDIR/authorized_keys"
 				echo "\n\nDo you want to replace it with the new one?[y/n]"
 				read USERINPUT
-				#Its a bit confusing, but this says, if 'y' then do
-				if [ "$USERINPUT" != "${USERINPUT#[Yy]}" ]
-				then
-					echo "Replacing it..."
-					rm -i "$HOME/.ssh/authorized_keys"
-					cd "$HOME/.ssh"
-					ln -s "../$CONFFOLD/authorized_keys" "./"
-					echo "Verifying permissions on .ssh dir"
-					chmod 0700 "$HOME/.ssh"
-					chmod 0600 "$CONFDIR/authorized_keys"
-				else
+				#Its a bit confusing, but this says, if NOT 'y' then do
+				if [ "$USERINPUT" == "${USERINPUT#[Yy]}" ]; then
 					echo "Not replacing the authorized keys file"
+					continue
 				fi
-			else
-				echo "Authorized key file seems up to date"
-			fi
-		else
-			echo "Adding new authorized key file..."
-			cd "$HOME/.ssh"
-			ln -s "../$CONFFOLD/authorized_keys" "./"
-			echo "Verifying permissions on .ssh dir"
-			chmod 0700 "$HOME/.ssh"
-			chmod 0600 "$CONFDIR/authorized_keys"
 		fi
+		#If we have gotten here then we are good to do things
+		echo "Replacing/Adding new authorized key file..."
+		cd "$HOME/.ssh"
+		rm -i "authorized_keys"
+		ln -s "../configs/authorized_keys" "./"
+		echo "Verifying permissions on .ssh dir"
+		chmod 0700 "$HOME/.ssh"
+		chmod 0600 "$CONFDIR/authorized_keys"
 		continue
 	fi
 
