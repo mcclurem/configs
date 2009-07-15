@@ -34,7 +34,7 @@ do
 					ln -s "../$CONFDIR/authorized_keys" "$HOME/.ssh/authorized_keys"
 					echo "Verifying permissions on .ssh dir"
 					chmod 0700 "$HOME/.ssh"
-					chmod 0700 "$CONFDIR/authorized_keys"
+					chmod 0600 "$CONFDIR/authorized_keys"
 				else
 					echo "Not replacing the authorized keys file"
 				fi
@@ -47,7 +47,7 @@ do
 			ln -s "../$CONFDIR/authorized_keys" "$HOME/.ssh/authorized_keys"
 			echo "Verifying permissions on .ssh dir"
 			chmod 0700 "$HOME/.ssh"
-			chmod 0700 "$CONFDIR/authorized_keys"
+			chmod 0600 "$CONFDIR/authorized_keys"
 		fi
 		continue
 	fi
