@@ -17,6 +17,8 @@ HISTIGNORE=clear:ls
 export HISTCONTROL
 export HISTIGNORE
 
+EDITOR=`which vim`
+export EDITOR
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
@@ -43,8 +45,9 @@ if [ -f /etc/profile.d/bash-completion.sh ]; then
 	source /etc/profile.d/bash-completion.sh
 fi
 
-# .plan (for finger)
-echo -e "Home Phone:    978-448-6288\nCell Phone:    978-400-6980\n-----\n`uname -o` `uname -rp`\n`uname -n`"> ~/.plan
-
+if [ `uname` != 'Darwin' ]; then
+	# .plan (for finger)
+	echo -e "Home Phone:    978-448-6288\nCell Phone:    978-400-6980\n-----\n`uname -o` `uname -rp`\n`uname -n`"> ~/.plan
+fi
 # Grep color options
   export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'

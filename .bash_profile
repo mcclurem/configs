@@ -17,12 +17,12 @@ if [ "$(which keychain 2>/dev/null)" ]; then
 fi
 
 if [ "$DISPLAY" ]; then
-	echo "found a disply"
 	if [ "$(which tpb 2>/dev/null)" ]; then
 		tpb -d &
 	fi
 	#set defaluts for x crap
-	xrdb -load ~/.Xresources
+	if [ `uname` != 'Darwin' ]; then
+		xrdb -load ~/.Xresources
+	fi
 fi
 
-true
