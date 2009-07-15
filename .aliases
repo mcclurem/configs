@@ -6,7 +6,12 @@ alias mv='mv -i'
 alias verb='export VERB=1'
 alias noverb='export VERB=0'
 alias cd..='cd ..'
-alias ls='ls --color=always'
+if [ `uname` == 'Darwin' ];
+then
+	alias ls='ls -G'
+else
+	alias ls='ls --color=always'
+fi
 alias lsa='ls -Ah'
 alias lsl='ls -lh'
 alias lsal='ls -lAh'

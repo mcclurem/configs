@@ -31,7 +31,7 @@ do
 					echo "Replacing it..."
 					rm -i "$HOME/.ssh/authorized_keys"
 					cd "$HOME/.ssh"
-					ln -s "../$CONFDIR/authorized_keys" "$HOME/.ssh/authorized_keys"
+					ln -s "../$CONFFOLD/authorized_keys" "./"
 					echo "Verifying permissions on .ssh dir"
 					chmod 0700 "$HOME/.ssh"
 					chmod 0600 "$CONFDIR/authorized_keys"
@@ -44,7 +44,7 @@ do
 		else
 			echo "Adding new authorized key file..."
 			cd "$HOME/.ssh"
-			ln -s "../$CONFDIR/authorized_keys" "$HOME/.ssh/authorized_keys"
+			ln -s "../$CONFFOLD/authorized_keys" "./"
 			echo "Verifying permissions on .ssh dir"
 			chmod 0700 "$HOME/.ssh"
 			chmod 0600 "$CONFDIR/authorized_keys"
