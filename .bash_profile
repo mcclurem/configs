@@ -26,3 +26,9 @@ if [ "$DISPLAY" ]; then
 	fi
 fi
 
+if [ `uname` == 'Darwin' ]; then
+	# Adding an appropriate PATH variable for use with MacPorts.
+	export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+	# Adding an appropriate MANPATH variable for use with MacPorts.
+	export MANPATH=/opt/local/share/man:$MANPATH
+fi
