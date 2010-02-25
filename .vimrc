@@ -8,6 +8,7 @@ augroup filetype
 	au! BufRead,BufNewFile *.thtml		set filetype=php
 	au! BufRead,BufNewFile *.jobdesc	set filetype=php
 	au! BufRead,BufNewFile *.verilog	set filetype=verilog
+	au! BufRead,BufNewFile *.c,*.h,*.cpp	set foldmethod=syntax
 augroup END
 syntax on
 filetype plugin on

@@ -41,6 +41,10 @@ if [ -f /etc/bash_completion ]; then
 	source /etc/bash_completion
 fi
 
+if [ -f /opt/local/etc/bash_completion ]; then
+	source /opt/local/etc/bash_completion
+fi
+
 if [ -f /etc/profile.d/bash-completion.sh ]; then
 	source /etc/profile.d/bash-completion.sh
 fi
@@ -51,3 +55,5 @@ if [ `uname` != 'Darwin' ]; then
 fi
 # Grep color options
   export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
+#IGVC build stuff
+  export IGVCDIR=/Users/mcclurem/code/gamma/trunk/localization
