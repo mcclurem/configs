@@ -41,3 +41,12 @@ fi
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 # Finished adapting your PATH environment variable for use with MacPorts.
 
+
+##
+# Your previous /Users/mcclurem/.bash_profile file was backed up as /Users/mcclurem/.bash_profile.macports-saved_2010-04-22_at_15:19:13
+##
+
+# MacPorts Installer addition on 2010-04-22_at_15:19:13: adding an appropriate PATH variable for use with MacPorts.
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+# Finished adapting your PATH environment variable for use with MacPorts.
+

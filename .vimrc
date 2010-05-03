@@ -12,4 +12,13 @@ augroup filetype
 augroup END
 syntax on
 filetype plugin on
-filetype indent on 
+filetype indent on
+function ToggleHLSearch()
+	if &hls
+		set nohls
+	else
+		set hls
+	endif
+endfunction
+
+nmap <silent> <C-n> <Esc>:call ToggleHLSearch()<CR>. 
