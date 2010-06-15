@@ -1,6 +1,6 @@
 set ruler
 set nu
-set tabstop=8
+"set tabstop=4"
 set tags=tags;~/
 colorscheme peachpuff
 augroup filetype
@@ -21,4 +21,19 @@ function ToggleHLSearch()
 	endif
 endfunction
 
-nmap <silent> <C-n> <Esc>:call ToggleHLSearch()<CR>. 
+function! Stab(value)
+	let &shiftwidth  = a:value
+	let &softtabstop = a:value
+	let &tabstop     = a:value
+endfunc
+
+call Stab(4)
+
+function SetICSCode()
+	set expandtab
+	set smarttab
+endfunction
+
+nmap <silent> <C-n> <Esc>:call ToggleHLSearch()<CR>.
+
+

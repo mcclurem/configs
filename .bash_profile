@@ -5,6 +5,11 @@ if [ -f ~/.bashrc ]; then
 	. ~/.bashrc
 fi
 
+#fink setup
+if [ -f /sw/bin/init.sh ]; then
+	. /sw/bin/init.sh
+fi
+
 # User specific environment and startup programs
 
 PATH=$PATH:$HOME/bin:/sbin:/usr/sbin
@@ -31,6 +36,8 @@ if [ `uname` == 'Darwin' ]; then
 	export PATH=/Users/mcclurem/.gem/ruby/1.8/bin:/opt/local/bin:/opt/local/sbin:$PATH
 	# Adding an appropriate MANPATH variable for use with MacPorts.
 	export MANPATH=/opt/local/share/man:$MANPATH
+	# Now edit the pythonpath
+	export PYTHONPATH=/opt/local/lib/python/site-packages:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/site-packages/
 fi
 
 ##
