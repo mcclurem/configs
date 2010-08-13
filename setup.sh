@@ -34,8 +34,8 @@ do
 		#If we have gotten here then we are good to do things
 		echo "Replacing/Adding new authorized key file..."
 		cd "$HOME/.ssh"
-		rm -i "authorized_keys"
-		ln -s "../configs/authorized_keys" "./"
+		rm -i "$HOME/.ssh/authorized_keys"
+		ln -s "$HOME/configs/authorized_keys" "$HOME/.ssh/"
 		echo "Verifying permissions on .ssh dir"
 		chmod 0700 "$HOME/.ssh"
 		chmod 0600 "$CONFDIR/authorized_keys"
