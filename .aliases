@@ -21,7 +21,6 @@ alias eix-sync='sudo eix-sync'
 alias sshurich='ssh -p 31416 mmcclure@urich'
 alias sshwww='ssh mmcclure@ics.com'
 alias ipodumount='kdeeject /dev/ipod'
-alias ipython='ipython-2.6'
 
 #alias s!='command sudo `!!`'
 alias bleedkerninst='mount /boot && make && make modules_install && cp arch/i386/boot/bzImage /boot/bleedingkernel-2.6.17-gentoo-r4'
