@@ -57,3 +57,4 @@ fi
   export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 #IGVC build stuff
   export IGVCDIR=/Users/mcclurem/code/gamma/trunk/localization
+

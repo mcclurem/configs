@@ -31,29 +31,20 @@ if [ "$DISPLAY" ]; then
 	fi
 fi
 
+
 if [ `uname` == 'Darwin' ]; then
 	# Adding an appropriate PATH variable for use with MacPorts.
-	export PATH=/Users/mcclurem/.gem/ruby/1.8/bin:/opt/local/bin:/opt/local/sbin:$PATH
+	export PATH=/Users/mcclurem/local/bin:/Users/mcclurem/.gem/ruby/1.8/bin:/opt/local/bin:/opt/local/sbin:/Users/mcclurem/local/avr/bin:$PATH
 	# Adding an appropriate MANPATH variable for use with MacPorts.
 	export MANPATH=/opt/local/share/man:$MANPATH
 	# Now edit the pythonpath
 	export PYTHONPATH=/opt/local/lib/python/site-packages:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/site-packages/
+    
+    export PATH="$PATH:$HOME/local/yagarto/yagarto-4.6.0/bin"
+    export PATH="$PATH:$HOME/local/yagarto/yagarto-4.6.0/tools"
+    export PATH="$PATH:$HOME/local/src/ct/bin"
 fi
 
-##
-# Your previous /Users/mcclurem/.bash_profile file was backed up as /Users/mcclurem/.bash_profile.macports-saved_2010-01-24_at_12:30:21
-##
-
-# MacPorts Installer addition on 2010-01-24_at_12:30:21: adding an appropriate PATH variable for use with MacPorts.
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-# Finished adapting your PATH environment variable for use with MacPorts.
 
 
-##
-# Your previous /Users/mcclurem/.bash_profile file was backed up as /Users/mcclurem/.bash_profile.macports-saved_2010-04-22_at_15:19:13
-##
-
-# MacPorts Installer addition on 2010-04-22_at_15:19:13: adding an appropriate PATH variable for use with MacPorts.
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-# Finished adapting your PATH environment variable for use with MacPorts.
 
