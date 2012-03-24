@@ -9,7 +9,8 @@ augroup filetype
     au! BufRead,BufNewFile *.pde            set filetype=c
     au! BufRead,BufNewFile *.thtml          set filetype=php
     au! BufRead,BufNewFile *.jobdesc        set filetype=php
-    au! BufRead,BufNewFile *.verilog        set filetype=verilog
+    au! BufRead,BufNewFile *.verilog,*.v    set filetype=verilog
+    au! BufRead,BufNewFile *.verilog,*.v    set foldmethod=indent
     au! BufRead,BufNewFile *.c,*.h,*.cpp    set foldmethod=syntax
     au! BufRead,BufNewFile *.py             set foldmethod=indent
 augroup END
@@ -40,5 +41,11 @@ endfunction
 call SetICSCode()
 
 nmap <silent> <C-n> <Esc>:call ToggleHLSearch()<CR>.
+let Tlist_Ctags_Cmd = "/opt/local/bin/ctags"
+let Tlist_WinWidth = 50
+map <Leader>1 :TlistToggle<cr>
+map <Leader>2 :!/opt/local/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+map <Leader>0 :w\|verbose !ngspice -b %<CR>
 
-
+map <Leader>9 :cn<cr>
+map <Leader>8 :cp<cr>
