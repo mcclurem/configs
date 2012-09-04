@@ -14,6 +14,13 @@ for FILE in $FILES
 do
 #Specific stuff for the auth key file:
 	if [ $FILE == 'authorized_keys' ]; then
+        #ensure ssh dir exists
+        if [ -d "$HOME/.ssh" ]; then
+            echo "ssh dir exists"
+        else
+            echo "no ssh dir, creating"
+            mkdir "$HOME/.ssh"
+        fi
 		#symlink exists:
 		if [ -L "$HOME/.ssh/authorized_keys" ]; then
 			echo "Simlink for authorized_keys already existed, skipping ..."
