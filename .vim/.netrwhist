@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/mcclurem/testsuites/spgscripts/lib'
+let g:netrw_dirhist_2='/Users/mcclurem/testsuites/spgscripts/lib/linklib_src'
+let g:netrw_dirhist_3='/Users/mcclurem/testsuites/spgscripts/lib/linklib_src/linklib'
+let g:netrw_dirhist_4='/Users/mcclurem/testsuites/spgscripts/lib/iDevice'
+let g:netrw_dirhist_5='/Users/mcclurem/testsuites/spgscripts/lib/linklib_src/linklib'
+let g:netrw_dirhist_6='/Users/mcclurem/testsuites/spgscripts/lib/diags'
