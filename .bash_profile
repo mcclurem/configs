@@ -2,7 +2,7 @@
 
 # get the aliases and functions from .bashrc
 if [ -f ~/.bashrc ]; then
-	. ~/.bashrc
+  . ~/.bashrc
 fi
 
 # user-specific environment and startup programs
@@ -10,24 +10,34 @@ fi
 # include root utils in PATH
 export PATH=$PATH:$HOME/bin:/sbin:/usr/sbin
 
-# If we have keychain then we rock
+# RVM settings
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+#export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH
+
+# if we have keychain then we rock
 if [ "$(which keychain 2>/dev/null)" ]; then
-	eval `keychain --ignore-missing -q --eval ~/.ssh/id_rsa ~/.ssh/id_dsa`
+  eval `keychain --ignore-missing -q --eval ~/.ssh/id_rsa ~/.ssh/id_dsa`
 fi
 
+#export CDPATH=.:$HOME/work
+
 #if [ "$DISPLAY" ]; then
-#	if [ "$(which tpb 2>/dev/null)" ]; then
-#		tpb -d &
-#	fi
-#	#set defaluts for x crap
-#	if [ `uname` != 'Darwin' ]; then
-#		xrdb -load ~/.Xresources
-#	fi
+# if [ "$(which tpb 2>/dev/null)" ]; then
+#   tpb -d &
+# fi
+# #set defaluts for x crap
+# if [ `uname` != 'Darwin' ]; then
+#   xrdb -load ~/.Xresources
+# fi
 #fi
 
+# os x stuff down here
 if [ `uname` == 'Darwin' ]; then
-	# Adding an appropriate PATH variable for use with MacPorts.
-	export PATH=/Users/mcclurem/local/bin:/Users/mcclurem/.gem/ruby/1.8/bin:/opt/local/bin:/opt/local/sbin:/Users/mcclurem/local/avr/bin:$PATH
-	# Adding an appropriate MANPATH variable for use with MacPorts.
-	export MANPATH=/opt/local/share/man:$MANPATH
+  # Adding an appropriate PATH variable for use with MacPorts.
+  export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+  # Adding an appropriate MANPATH variable for use with MacPorts.
+  export MANPATH=/opt/local/share/man:$MANPATH
+
+  # needed for SSD drives
+  ulimit -n 1024
 fi
