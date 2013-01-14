@@ -1,42 +1,37 @@
 # .bashrc
 
-# User specific aliases and functions
+# user-specific aliases and functions
 
-# Defines the verbose variable, see .bashprompt.sh for details
-VERB=0
-export VERB
-
-# test for an interactive shell.
+# test for an interactive shell
 if [[ $- != *i* ]]; then
    return
 fi
 
-# History crap
-HISTCONTROL=ignoredups
-HISTIGNORE=clear:ls
-export HISTCONTROL
-export HISTIGNORE
+# history crap
+export HISTCONTROL=ignoredups
+export HISTIGNORE=clear:ls
 
-EDITOR=`which vim`
-export EDITOR
+# set vim as the default editor
+export EDITOR=`which vim`
 
-# Source global definitions
+# source global definitions
 if [ -f /etc/bashrc ]; then
 	source /etc/bashrc
 fi
 
-# Source aliases
+# source aliases
 if [ -f ~/.aliases ]; then
 	source ~/.aliases
 fi
 
-# Source prompt
+# source prompt
 if [ -f ~/.bash_prompt ]; then
 	source ~/.bash_prompt
    else
 	PS1='$PWD > '
 fi
-# Bash Completion
+
+# source bash completion
 if [ -f /etc/bash_completion ]; then
 	source /etc/bash_completion
 fi
@@ -49,12 +44,11 @@ if [ -f /etc/profile.d/bash-completion.sh ]; then
 	source /etc/profile.d/bash-completion.sh
 fi
 
+# set up simple .plan (for finger utility)
 if [ `uname` != 'Darwin' ]; then
-	# .plan (for finger)
-	echo -e "Home Phone:    978-448-6288\nCell Phone:    978-400-6980\n-----\n`uname -o` `uname -rp`\n`uname -n`"> ~/.plan
+	echo -e "$(uname -a)"> ~/.plan
 fi
-# Grep color options
-  export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
-#IGVC build stuff
-  export IGVCDIR=/Users/mcclurem/code/gamma/trunk/localization
 
+# grep color options
+export GREP_OPTIONS='--color=auto'
+export GREP_COLOR='1;32'

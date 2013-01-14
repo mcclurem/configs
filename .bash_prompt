@@ -1,9 +1,7 @@
 #!/bin/sh
 # ~/.bash_prompt.sh
 
-#Color Definitions
-
-
+# color definitions
 BLACK="\[\e[0;30m\]"
 RED="\[\e[0;31m\]"
 GREEN="\[\e[0;32m\]"
@@ -21,8 +19,7 @@ BBLUE="\[\e[1;34m\]"
 BPURPLE="\[\e[1;35m\]"
 BCYAN="\[\e[1;36m\]"
 BWHITE="\[\e[1;37m\]"
-#Return everything to default
-CLEAR="\[\e[0m\]"
+CLEAR="\[\e[0m\]" # return everything to default
 
 
 function setprompt(){
@@ -54,7 +51,6 @@ case $HOSTNAME in
 	HOSTC=$WHITE
 	;;
 esac
-
 
 if [ $VERB == 1 ]; then
 	PS1="${TIMEC}\@ ${USERC}\u@${HOSTC}\h ${PATHC}$PWD >${CLEAR} "

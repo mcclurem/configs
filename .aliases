@@ -1,28 +1,23 @@
-# User specific aliases and functions
-alias startx='choosex'
-alias rm='rm -i'
-alias cp='cp -i'
-alias mv='mv -i'
-alias verb='export VERB=1'
-alias noverb='export VERB=0'
-alias cd..='cd ..'
+# user-specific aliases and functions
+
+#alias rm='rm -i'
+#alias cp='cp -i'
+#alias mv='mv -i'
+
+# os x only
 if [ `uname` == 'Darwin' ];
 then
 	alias ls='ls -G'
 else
 	alias ls='ls --color=always'
 fi
+
 alias lsa='ls -Ah'
 alias lsl='ls -lh'
 alias lsal='ls -lAh'
 alias LS='ls'
 alias ..='cd ..; ls'
-alias eix-sync='sudo eix-sync'
-alias sshurich='ssh -p 31416 mmcclure@urich'
-alias sshwww='ssh mmcclure@ics.com'
-alias ipodumount='kdeeject /dev/ipod'
+alias cd..='cd ..'
 
-#alias s!='command sudo `!!`'
-alias bleedkerninst='mount /boot && make && make modules_install && cp arch/i386/boot/bzImage /boot/bleedingkernel-2.6.17-gentoo-r4'
-alias 32bitpy='export VERSIONER_PYTHON_PREFER_32_BIT=yes'
-alias dnsflush='sudo killall -HUP mDNSResponder'
+# gentoo only
+#alias eix-sync='sudo eix-sync'
