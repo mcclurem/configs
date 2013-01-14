@@ -30,7 +30,7 @@ if [ -f ~/.aliases ]; then
 	source ~/.aliases
 fi
 
-# alias.sh aliases
+# source alias.sh aliases
 if [ -f ~/.aliases.sh ]; then
 	# curl https://alias.sh/user/296/alias >> ~/.aliases.sh
 	source ~/.aliases.sh
@@ -38,10 +38,13 @@ if [ -f ~/.aliases.sh ]; then
 fi
 
 # source prompt
-if [ -f ~/.bash_prompt ]; then
-	source ~/.bash_prompt
-   else
-	PS1='$PWD > '
+if [ -f $HOME/other_projects/git-prompt/git-prompt.sh ]; then
+	# load git-prompt if available
+	. $HOME/other_projects/git-prompt/git-prompt.sh
+elif [ -f ~/.bash_prompt ]; then
+  . $HOME/.bash_prompt
+else
+  PS1='$PWD > '
 fi
 
 # source bash completion
