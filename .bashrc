@@ -8,8 +8,14 @@ if [[ $- != *i* ]]; then
 fi
 
 # history crap
-export HISTCONTROL=ignoredups
+export HISTCONTROL=ignoreboth # ignores dups and whitespace
 export HISTIGNORE=clear:ls
+export HISTSIZE=1000000
+export HISTFILESIZE=1000000
+shopt -s histappend
+
+# fix spelling errors
+shopt -s cdspell
 
 # set vim as the default editor
 export EDITOR=`which vim`
@@ -22,6 +28,13 @@ fi
 # source aliases
 if [ -f ~/.aliases ]; then
 	source ~/.aliases
+fi
+
+# alias.sh aliases
+if [ -f ~/.aliases.sh ]; then
+	# curl https://alias.sh/user/296/alias >> ~/.aliases.sh
+	source ~/.aliases.sh
+	#source <(wget -q -O - "$@" https://alias.sh/user/296/alias)
 fi
 
 # source prompt
