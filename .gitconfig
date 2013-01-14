@@ -1,0 +1,35 @@
+[user]
+  name = Dana Merrick
+  email = dmerrick@brightcove.com
+[color]
+  ui = auto
+[core]
+  excludesfile = /Users/dmerrick/.gitignore.global
+[difftool "sourcetree"]
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path = 
+[mergetool "sourcetree"]
+  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
+[alias]
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+  co = checkout
+  s = status
+
+  a = add
+  d = diff
+  dt = difftool
+
+  c = commit 
+  ca = commit -a
+
+  l = log
+
+  pr = pull --rebase
+  pom = push origin master
+  p = push
+
+  ru = remote update
+  ro = rebase origin/master
+  r = rebase
+
