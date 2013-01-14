@@ -6,7 +6,7 @@ if [ $# != 0 ] && [ $1 == "update" ]; then
 fi
 
 CONFDIR="$HOME/configs"
-FILES=`ls -A $CONFDIR|grep -v "\.git"|grep -v "setup.sh"|grep -v ".gitignore"`
+FILES=`ls -A $CONFDIR|grep -v "\.git$"|grep -v ".gitignore"|grep -v "setup.sh"`
 echo $FILES;
 
 for FILE in $FILES
@@ -22,7 +22,7 @@ do
     fi
     # symlink exists:
     if [ -L "$HOME/.ssh/authorized_keys" ]; then
-      echo "Simlink for authorized_keys already existed, skipping ..."
+      echo "Symlink for authorized_keys already existed, skipping ..."
       continue
     fi
     # we already have a file there
