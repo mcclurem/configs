@@ -1,5 +1,23 @@
 # user-specific aliases and functions
 
+# makes git 66% smaller
+g() {
+ if [[ $# == '0' ]]; then
+   git status -sb
+ else
+   git "$@"
+ fi
+}
+
+# create a directory shortcut
+a() { alias $1=cd\ $PWD; }
+
+#alias gs='git status -s'
+#alias gc='git commit -m'
+#alias ga='git add -A'
+#alias gd='git diff | mate'
+#alias gds='git diff -- src/ | mate'
+
 #alias rm='rm -i'
 #alias cp='cp -i'
 #alias mv='mv -i'
@@ -12,12 +30,18 @@ else
 	alias ls='ls --color=always'
 fi
 
+alias b='bundle exec'
+
 alias lsa='ls -Ah'
 alias lsl='ls -lh'
 alias lsal='ls -lAh'
 alias LS='ls'
-alias ..='cd ..; ls'
 alias cd..='cd ..'
+alias ..="cd .. && ls"
+alias ...="cd ../.. && ls"
+alias ....="cd ../../.. && ls"
+alias .....="cd ../../../.. && ls"
+alias ......="cd ../../../../.. && ls"
 
 # gentoo only
 #alias eix-sync='sudo eix-sync'
