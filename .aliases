@@ -25,6 +25,15 @@ g() {
 if [ `uname` == 'Darwin' ];
 then
   alias ls='ls -G'
+  # assumes /Volumes/Data exists
+  sync_tv() {
+    cd /Volumes/Data && \
+    rsync -vaudmzhPi --no-g --no-o --inplace --stats --log-file=.rsync.tv.log --exclude-from=.rsync.excludes pancake:files/"TV\ Shows" ./files/
+  }
+  sync_movies() {
+    cd /Volumes/Data && \
+    rsync -vaudmzhPi --no-g --no-o --inplace --stats --log-file=.rsync.movies.log --exclude-from=.rsync.excludes pancake:files/Movies ./files/
+  }
 else
   alias ls='ls --color=always'
 fi
