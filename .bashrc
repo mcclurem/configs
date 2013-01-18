@@ -12,10 +12,18 @@ export HISTCONTROL=ignoreboth # ignores dups and whitespace
 export HISTIGNORE=clear:ls
 export HISTSIZE=1000000
 export HISTFILESIZE=1000000
+export HISTTIMEFORMAT="%F %T " # show times next to history items
 shopt -s histappend
 
 # fix spelling errors
 shopt -s cdspell
+
+# tries to save multi line commands as one line
+shopt -s cmdhist
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
 
 # set vim as the default editor
 export EDITOR=`which vim`
@@ -60,6 +68,9 @@ fi
 if [ -f /etc/profile.d/bash-completion.sh ]; then
   source /etc/profile.d/bash-completion.sh
 fi
+
+# enable tab complete for sudo
+complete -cf sudo
 
 # set up simple .plan (for finger utility)
 if [ `uname` != 'Darwin' ]; then
