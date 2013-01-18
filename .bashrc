@@ -67,6 +67,12 @@ if [ -f /etc/profile.d/bash-completion.sh ]; then
   source /etc/profile.d/bash-completion.sh
 fi
 
+# enable git completion
+#NOTE: does not currently work with g() shortcut
+if [ -f $HOME/.git-completion.bash ]; then
+  source $HOME/.git-completion.bash
+fi
+
 # enable tab complete for sudo
 complete -cf sudo
 
