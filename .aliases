@@ -1,9 +1,17 @@
 # user-specific aliases and functions
 
-# pull confs from github and run setup script
-alias confsync="cd ~/configs && ./setup.sh update && ./setup.sh"
+# checks if we have a program
+# we_have program name returns boolean
+function we_have() {
+  RETVAL=true
+  for program in "$@"; do
+    [ -z "$(which $program 2>/dev/null)" ] && RETVAL=false
+  done
+  $RETVAL
+}
 
 # makes git 66% smaller
+# (and shows git status if no args)
 g() {
  if [[ $# == '0' ]]; then
    git status -sb
@@ -11,19 +19,6 @@ g() {
    git "$@"
  fi
 }
-
-# create a directory shortcut
-a() { alias $1=cd\ $PWD; }
-
-#alias gs='git status -s'
-#alias gc='git commit -m'
-#alias ga='git add -A'
-#alias gd='git diff | mate'
-#alias gds='git diff -- src/ | mate'
-
-#alias rm='rm -i'
-#alias cp='cp -i'
-#alias mv='mv -i'
 
 # os x only
 if [ `uname` == 'Darwin' ];
@@ -35,16 +30,97 @@ fi
 
 alias b='bundle exec'
 
+# common typos
+alias sudp='sudo'
+alias LS='ls'
+alias cd..='cd ..'
+
+# pull confs from github and run setup script
+alias confsync="cd ~/configs && ./setup.sh update && ./setup.sh"
+
+# vim
+if we_have vim
+  then alias vi="vim"
+  else alias vim="vi"
+fi
+alias ":e"="vim"
+alias ":q"="clear"
+
+# ls
 alias lsa='ls -Ah'
 alias lsl='ls -lh'
 alias lsal='ls -lAh'
-alias LS='ls'
-alias cd..='cd ..'
 alias ..="cd .. && ls"
 alias ...="cd ../.. && ls"
 alias ....="cd ../../.. && ls"
 alias .....="cd ../../../.. && ls"
 alias ......="cd ../../../../.. && ls"
+
+# beep!
+alias beep='echo -en "\033[10;1729]\a"'
+
+# clear screen
+alias clr="clear"
+alias cls="clear"
+
+# df and du -> human readable
+alias df="df -h"
+alias du="du -h"
+
+# watch at a reasonable speed
+alias watch="watch -n 1"
+
+# ps aux
+alias psax="ps -ef"
+
+# shows if two files are the same
+alias same='diff -sq'
+
+# returns uncommented lines
+alias nocom='grep "^[^#]"'
+
+# what's my IP?
+alias myip="ifconfig eth0 | awk '/inet / { print $2 }' | sed 's/addr://'"
+
+# number of seconds since the Epoch
+alias epoch="date +%s"
+
+# password generator
+we_have apg && alias password-generator='apg -qsa 0 -n 6 -m 8 -x 8 -E "Il1|0O" -M snCl'
+
+# allow mate over ssh
+if we_have mate
+  then
+  mate-ssh() {
+    scp -q $1:$2 /tmp/$2 2>/dev/null && \
+    mate -w /tmp/$2 && scp -q /tmp/$2 $1:$2 2>/dev/null
+    rm /tmp/$2
+  }
+fi
+
+# create a directory shortcut
+#a() { alias $1=cd\ $PWD; }
+
+# git aliases
+#alias gs='git status -s'
+#alias gc='git commit -m'
+#alias ga='git add -A'
+#alias gd='git diff | mate'
+#alias gds='git diff -- src/ | mate'
+
+# super safe file utils
+#alias rm='rm -i'
+#alias cp='cp -i'
+#alias mv='mv -i'
+
+# returns latest kernel info
+#alias kernelinfo='finger @kernel.org'
+
+# neat trick
+# telnet towel.blinkenlights.nl 23
+
+# crazy cursor trick
+# perl -e '$|++; printf "\e[%c", 65 + rand()*4 until select $x,$x,$x,0.02'
 
 # gentoo only
 #alias eix-sync='sudo eix-sync'
