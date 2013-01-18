@@ -1,6 +1,4 @@
-# .bashrc
-
-# user-specific aliases and functions
+# ~/.bashrc
 
 # test for an interactive shell
 if [[ $- != *i* ]]; then

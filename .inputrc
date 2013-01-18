@@ -1,3 +1,5 @@
+# ~/.inputrc
+
 # smart history for scrolling up and down
 "\e[A":history-search-backward
 "\e[B":history-search-forward
