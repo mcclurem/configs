@@ -1,9 +1,17 @@
-Dana's Configs
-==============
+# DANA'S CONFIGS
 
 My dotfiles and other miscellaneous configs.
 
-HOW TO INSTALL
-==============
+Symlinks will be created from your homedir to this project. Your existing setup (if any) will not be removed.
 
-Run ./setup.sh
+
+## How to Install
+
+* Clone this repo into your homedir
+* `cd ~/configs`
+* `./setup.sh`
+
+
+## How to Update
+
+* `confsync`
