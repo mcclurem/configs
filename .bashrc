@@ -54,7 +54,6 @@ if [ `uname` != 'Darwin' ]; then
 	echo -e "Home Phone:    978-448-6288\nCell Phone:    978-400-6980\n-----\n`uname -o` `uname -rp`\n`uname -n`"> ~/.plan
 fi
 # Grep color options
-  export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
-#IGVC build stuff
-  export IGVCDIR=/Users/mcclurem/code/gamma/trunk/localization
+export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 
+export NANOCOM="-d /dev/cu.kong*"
