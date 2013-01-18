@@ -35,14 +35,11 @@ if [ $? == 0 ]; then
 fi
 
 case $HOSTNAME in
-  greased-up-deaf-guy )
+  dmerrick-work|greased-up-deaf-guy )
   HOSTC=$CYAN
   ;;
   dmerrick-personal|bacon )
   HOSTC=$YELLOW
-  ;;
-  dmerrick-work )
-  HOSTC=$CYAN
   ;;
   pancake )
   HOSTC=$BLUE
