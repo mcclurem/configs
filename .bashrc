@@ -68,3 +68,7 @@ fi
 # grep color options
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
+
+# from pancake .bashrc
+# enables ^s and ^q in rTorrent, when running in screen
+stty -ixon -ixoff
