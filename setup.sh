@@ -11,7 +11,7 @@ echo $FILES;
 
 for FILE in $FILES
 do
-  # specific stuff for the auth key file:
+  # START authorized_keys specific stuff
   if [ $FILE == 'authorized_keys' ]; then
     # ensure ssh dir exists
     if [ -d "$HOME/.ssh" ]; then
@@ -47,12 +47,14 @@ do
     chmod 0600 "$CONFDIR/authorized_keys"
     continue
   fi
+  # END authorized_keys specific stuff
 
   # if the symlink exists, don't worry anymore
   if [ -L "$HOME/$FILE" ]; then
     continue
   fi
-# if the file exists...
+
+  # if the file exists...
   if [ -f "$HOME/$FILE" ];
   then
     if [ `diff "$CONFDIR/$FILE" "$HOME/$FILE"|head -n1` ];
@@ -60,6 +62,7 @@ do
       # file already exists its up to you to fix it
       echo -e "The file $FILE already exists, here is the difference:"
       diff "$CONFDIR/$FILE" "$HOME/$FILE"
+      echo ""
       continue
     else
       echo -e "The file $FILE already exists but I didn't see any differences so I went ahead and replaced it with a symlink"
@@ -68,7 +71,7 @@ do
       continue
     fi
   else
-    echo -e "I don't think anything existed so I'm adding $FILE"
+    echo -e "The file didn't exist so I'm adding $FILE"
     ln -s "$CONFDIR/$FILE" "$HOME/$FILE"
   fi
 
