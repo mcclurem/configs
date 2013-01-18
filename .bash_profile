@@ -31,6 +31,10 @@ if [ "$DISPLAY" ]; then
 	fi
 fi
 
+if [ -d "$HOME/local/arm/bin" ]; then
+    export PATH="$PATH:$HOME/local/arm/bin"
+fi
+
 
 if [ `uname` == 'Darwin' ]; then
 	# Adding an appropriate PATH variable for use with MacPorts.
