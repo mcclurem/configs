@@ -43,6 +43,11 @@ if [ -f ~/.aliases.sh ]; then
   #source <(wget -q -O - "$@" https://alias.sh/user/296/alias)
 fi
 
+# sensitive or host-specific data goes in here
+if [ -f $HOME/.bash_profile.private ]; then
+  source $HOME/.bash_profile.private
+fi
+
 # load git-prompt if available, else use .bash_prompt
 if [ -f $HOME/other_projects/git-prompt/git-prompt.sh ]; then
   # mkdir -p ~/other_projects
