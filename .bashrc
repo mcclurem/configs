@@ -37,9 +37,10 @@ if [ -f ~/.aliases.sh ]; then
   #source <(wget -q -O - "$@" https://alias.sh/user/296/alias)
 fi
 
-# source prompt
+# load git-prompt if available, else use .bash_prompt
 if [ -f $HOME/other_projects/git-prompt/git-prompt.sh ]; then
-  # load git-prompt if available
+  # mkdir -p ~/other_projects
+  # git clone https://github.com/dmerrick/git-prompt.git ~/other_projects/git-prompt
   . $HOME/other_projects/git-prompt/git-prompt.sh
 elif [ -f ~/.bash_prompt ]; then
   . $HOME/.bash_prompt
