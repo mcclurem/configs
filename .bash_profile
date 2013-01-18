@@ -1,10 +1,5 @@
 #~/.bash_profile
 
-# Get the aliases and functions
-if [ -f ~/.bashrc ]; then
-	. ~/.bashrc
-fi
-
 #fink setup
 if [ -f /sw/bin/init.sh ]; then
 	. /sw/bin/init.sh
@@ -56,7 +51,10 @@ if [ `uname` == 'Darwin' ]; then
 	export PYTHONPATH=/opt/local/lib/python/site-packages:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/site-packages/
 fi
 
-
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+	. ~/.bashrc
+fi
 
 
 
