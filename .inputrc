@@ -1,0 +1,17 @@
+# ~/.inputrc
+
+# smart history for scrolling up and down
+"\e[A":history-search-backward
+"\e[B":history-search-forward
+
+# macro examle:
+# alt-w will add "# macro" to end of line
+"\ew":"\C-e # macro"
+
+# man bash; seach for "readline variables"
+set show-all-if-ambiguous on
+set completion-ignore-case on
+set completion-query-items 10000
+set completion-map-case on
+set bell-style none
+#set echo-control-characters off # prevent "^C" from appearing
