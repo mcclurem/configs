@@ -88,15 +88,14 @@ alias epoch="date +%s"
 # password generator
 we_have apg && alias password-generator='apg -qsa 0 -n 6 -m 8 -x 8 -E "Il1|0O" -M snCl'
 
-# allow mate over ssh
-if we_have mate
-  then
-  mate-ssh() {
-    scp -q $1:$2 /tmp/$2 2>/dev/null && \
-    mate -w /tmp/$2 && scp -q /tmp/$2 $1:$2 2>/dev/null
-    rm /tmp/$2
-  }
-fi
+# allow subl over ssh
+subl-ssh() {
+  if [ -z "$2" ]; then echo "Usage: subl-ssh server file" && return; fi
+  scp -q $1:$2 /tmp/$2 2>/dev/null && \
+  subl -w /tmp/$2 && \
+  scp -q /tmp/$2 $1:$2 2>/dev/null
+  rm /tmp/$2
+}
 
 # create a directory shortcut
 #a() { alias $1=cd\ $PWD; }
