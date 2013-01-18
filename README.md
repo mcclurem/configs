@@ -9,6 +9,7 @@ Symlinks will be created from your homedir to this project. Your existing setup 
 
 * Clone this repo into your homedir
 * `cd ~/configs`
+* Optional: `./setup.sh update`
 * `./setup.sh`
 
 
