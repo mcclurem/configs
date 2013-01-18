@@ -1,5 +1,8 @@
 # user-specific aliases and functions
 
+# pull confs from github and run setup script
+alias confsync="cd ~/configs && ./setup.sh update && ./setup.sh"
+
 # makes git 66% smaller
 g() {
  if [[ $# == '0' ]]; then
