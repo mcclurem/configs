@@ -38,13 +38,13 @@ case $HOSTNAME in
 	greased-up-deaf-guy )
 	HOSTC=$CYAN
 	;;
-	chickensuit )
+	dmerrick-personal|bacon )
 	HOSTC=$YELLOW
 	;;
-	lukecage )
+	dmerrick-work )
 	HOSTC=$CYAN
 	;;
-	elektra )
+	pancake )
 	HOSTC=$BLUE
 	;;
 	*)
