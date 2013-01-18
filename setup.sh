@@ -6,7 +6,7 @@ if [ $# != 0 ] && [ $1 == "update" ]; then
 fi
 
 CONFDIR="$HOME/configs"
-FILES=`ls -A $CONFDIR|grep -v "\.git$"|grep -v ".gitignore"|grep -v "setup.sh"`
+FILES=`ls -A $CONFDIR|grep -v "\.git$"|grep -v ".gitignore"|grep -v "setup.sh"|grep -v "old_configs"`
 echo $FILES;
 
 for FILE in $FILES
