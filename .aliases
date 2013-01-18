@@ -28,9 +28,9 @@ a() { alias $1=cd\ $PWD; }
 # os x only
 if [ `uname` == 'Darwin' ];
 then
-	alias ls='ls -G'
+  alias ls='ls -G'
 else
-	alias ls='ls --color=always'
+  alias ls='ls --color=always'
 fi
 
 alias b='bundle exec'

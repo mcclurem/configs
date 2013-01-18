@@ -25,37 +25,37 @@ CLEAR="\[\e[0m\]" # return everything to default
 function setprompt(){
 
 if [ $? == 0 ]; then
-	TIMEC="$GREEN"
-	USERC="$PURPLE"
-	PATHC="$CLEAR"
+  TIMEC="$GREEN"
+  USERC="$PURPLE"
+  PATHC="$CLEAR"
    else
-	TIMEC="$RED"
-	USERC="$RED"
-	PATHC="$RED"
+  TIMEC="$RED"
+  USERC="$RED"
+  PATHC="$RED"
 fi
 
 case $HOSTNAME in
-	greased-up-deaf-guy )
-	HOSTC=$CYAN
-	;;
-	dmerrick-personal|bacon )
-	HOSTC=$YELLOW
-	;;
-	dmerrick-work )
-	HOSTC=$CYAN
-	;;
-	pancake )
-	HOSTC=$BLUE
-	;;
-	*)
-	HOSTC=$WHITE
-	;;
+  greased-up-deaf-guy )
+  HOSTC=$CYAN
+  ;;
+  dmerrick-personal|bacon )
+  HOSTC=$YELLOW
+  ;;
+  dmerrick-work )
+  HOSTC=$CYAN
+  ;;
+  pancake )
+  HOSTC=$BLUE
+  ;;
+  *)
+  HOSTC=$WHITE
+  ;;
 esac
 
 if [ $VERB == 1 ]; then
-	PS1="${TIMEC}\@ ${USERC}\u@${HOSTC}\h ${PATHC}$PWD >${CLEAR} "
+  PS1="${TIMEC}\@ ${USERC}\u@${HOSTC}\h ${PATHC}$PWD >${CLEAR} "
 else
-	PS1="${TIMEC}\@ ${USERC}\u@${HOSTC}\h ${PATHC}\W >${CLEAR} "
+  PS1="${TIMEC}\@ ${USERC}\u@${HOSTC}\h ${PATHC}\W >${CLEAR} "
 fi
 }
 export PROMPT_COMMAND=setprompt
