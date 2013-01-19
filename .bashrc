@@ -5,6 +5,11 @@ if [[ $- != *i* ]]; then
    return
 fi
 
+# source global definitions
+if [ -f /etc/bashrc ]; then
+  source /etc/bashrc
+fi
+
 # history crap
 export HISTCONTROL=ignoreboth # ignores dups and whitespace
 export HISTIGNORE=clear:ls
@@ -25,11 +30,6 @@ shopt -s checkwinsize
 
 # set vim as the default editor
 export EDITOR=`which vim`
-
-# source global definitions
-if [ -f /etc/bashrc ]; then
-  source /etc/bashrc
-fi
 
 # source aliases
 if [ -f ~/.aliases ]; then
