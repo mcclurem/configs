@@ -60,6 +60,7 @@ if we_have vim
   then alias vi="vim"
   else alias vim="vi"
 fi
+alias svim="sudo vim"
 alias ":e"="vim"
 alias ":q"="clear"
 
