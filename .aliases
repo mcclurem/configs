@@ -25,14 +25,21 @@ g() {
 if [ `uname` == 'Darwin' ];
 then
   alias ls='ls -G'
-  # assumes /Volumes/Data exists
   sync_tv() {
-    cd /Volumes/Data && \
-    rsync -vadmhPi --append-verify --stats --log-file=.rsync.tv.log --exclude-from=.rsync.excludes pancake:files/"TV\ Shows" ./files/
+    if [ -d "/Volumes/Data" ]; then
+      cd /Volumes/Data && \
+      rsync -vadmhPi --append-verify --stats --log-file=.rsync.tv.log --exclude-from=.rsync.excludes pancake:files/"TV\ Shows" ./files/
+    else
+      echo "External drive not found. Stopping."
+    fi
   }
   sync_movies() {
-    cd /Volumes/Data && \
-    rsync -vadmhPi --append-verify --stats --log-file=.rsync.movies.log --exclude-from=.rsync.excludes pancake:files/Movies ./files/
+    if [ -d "/Volumes/Data" ]; then
+      cd /Volumes/Data && \
+      rsync -vadmhPi --append-verify --stats --log-file=.rsync.movies.log --exclude-from=.rsync.excludes pancake:files/Movies ./files/
+    else
+      echo "External drive not found. Stopping."
+    fi
   }
 else
   alias ls='ls --color=always'
