@@ -11,20 +11,20 @@ if [ -f /sw/bin/init.sh ]; then
 fi
 
 PrependPath(){
-    if [ $? == 1 ];then
-        if [ -d $0 ] || [ -f $0 ]; then
-           export PATH="$0:$PATH"
+    if [ $# == 1 ];then
+        if [ -d $1 ] || [ -f $1 ]; then
+           export PATH="$1:$PATH"
         fi
     else
-        if [ -d $0 ] || [ -f $0 ]; then
-            export $0="$1:$0"
+        if [ -d $1 ] || [ -f $1 ]; then
+            export $1="$2:$1"
         fi
     fi  
 }
 
 AppendPath(){
-    if [ -d $0 ] || [ -f $0 ]; then
-       export PATH="$PATH:$0"
+    if [ -d $1 ] || [ -f $1 ]; then
+       export PATH="$PATH:$1"
     fi
 }
 
@@ -65,7 +65,11 @@ if [ `uname` == 'Darwin' ]; then
     AppendPath "/Users/mcclurem/local/avr/bin"
 	# Adding an appropriate MANPATH variable for use with MacPorts.
 	PrependPath MANPATH "/opt/local/share/man"
-	# Now edit the pythonpath
+    # Manpath for gnuutils
+    PrependPath MANPATH "/opt/homebrew/opt/coreutils/libexec/gnuman"
+    #GNU utils are good
+    PrependPath "/opt/homebrew/opt/coreutils/libexec/gnubin"
+    # Now edit the pythonpath
 	export PYTHONPATH=/opt/local/lib/python/site-packages:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/site-packages/
 fi
 
