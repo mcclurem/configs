@@ -10,18 +10,23 @@ if [ -f /sw/bin/init.sh ]; then
 	. /sw/bin/init.sh
 fi
 
-function PrependPath(){
-    if [ -d $0 ] || [ -f $0 ]; then
-       export PATH="$0:$PATH"
-    fi
+PrependPath(){
+    if [ $? == 1 ];then
+        if [ -d $0 ] || [ -f $0 ]; then
+           export PATH="$0:$PATH"
+        fi
+    else
+        if [ -d $0 ] || [ -f $0 ]; then
+            export $0="$1:$0"
+        fi
+    fi  
 }
 
-function AppendPath(){
+AppendPath(){
     if [ -d $0 ] || [ -f $0 ]; then
        export PATH="$PATH:$0"
     fi
 }
-
 
 
 # If we have keychain then we rock
@@ -59,12 +64,10 @@ if [ `uname` == 'Darwin' ]; then
     PrependPath "/opt/local/bin:/opt/local/sbin"
     AppendPath "/Users/mcclurem/local/avr/bin"
 	# Adding an appropriate MANPATH variable for use with MacPorts.
-	export MANPATH=/opt/local/share/man:$MANPATH
+	PrependPath MANPATH "/opt/local/share/man"
 	# Now edit the pythonpath
 	export PYTHONPATH=/opt/local/lib/python/site-packages:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/site-packages/
 fi
-
-
 
 
 
