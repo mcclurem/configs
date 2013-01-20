@@ -38,6 +38,10 @@ if [ `uname` == 'Darwin' ]; then
   # Adding an appropriate MANPATH variable for use with MacPorts.
   export MANPATH=/opt/local/share/man:$MANPATH
 
+  # custom ls colors
+  export CLICOLOR=1
+  export LSCOLORS=FxFxCxDxBxegedabagacfH # pretty much only for the last 2 chars
+
   # needed for SSD drives
   ulimit -n 1024
 fi
