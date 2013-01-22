@@ -54,6 +54,15 @@ then
     fi
   }
 
+  sync_other() {
+    if [ -d "/Volumes/Data" ]; then
+      cd /Volumes/Data && \
+      rsync -vadmhPi --no-p --append-verify --log-file=.rsync.other.log $@ pancake:files/Other ./files/
+    else
+      echo "External drive not found. Stopping."
+    fi
+  }
+
 else
   alias ls='ls --color=always'
 fi
