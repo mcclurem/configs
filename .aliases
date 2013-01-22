@@ -25,6 +25,8 @@ g() {
 if [ `uname` == 'Darwin' ];
 then
   alias ls='ls -G'
+
+  # tip: pass --dry-run or --bwlimit=KBPS
   sync_tv() {
     if [ -d "/Volumes/Data" ]; then
       cd /Volumes/Data && \
@@ -33,6 +35,7 @@ then
       echo "External drive not found. Stopping."
     fi
   }
+
   sync_movies() {
     if [ -d "/Volumes/Data" ]; then
       cd /Volumes/Data && \
@@ -41,6 +44,16 @@ then
       echo "External drive not found. Stopping."
     fi
   }
+
+  sync_music() {
+    if [ -d "/Volumes/Data" ]; then
+      cd /Volumes/Data && \
+      rsync -vadmhPi --no-p --append-verify --log-file=.rsync.music.log --exclude-from=.rsync.excludes.with.music $@ pancake:files/Music ./files/
+    else
+      echo "External drive not found. Stopping."
+    fi
+  }
+
 else
   alias ls='ls --color=always'
 fi
