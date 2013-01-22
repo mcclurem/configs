@@ -1,4 +1,11 @@
 #!/bin/bash
+# this script deploys your dotfiles into your home dir
+
+# don't worry, if a file already exists we won't touch it
+# for everything else, a symlink will be created to this project
+
+# yes, this could be a lot more elegant in ruby or python
+# it's in bash so the project has less hard dependencies
 
 if [ $# != 0 ] && [ $1 == "update" ]; then
   git pull --rebase
