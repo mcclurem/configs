@@ -137,6 +137,8 @@ subl-ssh() {
   rm /tmp/$2
 }
 
+alias s.="subl ."
+
 # create a directory shortcut
 #a() { alias $1=cd\ $PWD; }
 
