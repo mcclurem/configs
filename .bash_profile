@@ -2,7 +2,9 @@
 
 PrependPath(){
     if [ $# == 1 ];then
-        [[ `echo "$PATH"|grep $1` ]] && return
+        if [[ `echo $PATH|grep $1` ]]; then
+            export PATH=`echo $PATH|sed -e "s|:$1||"`
+        fi
         if [ -d $1 ] || [ -f $1 ]; then
            export PATH="$1:$PATH"
         fi
@@ -72,6 +74,7 @@ if [ `uname` == 'Darwin' ]; then
     # Manpath for gnuutils
     PrependPath MANPATH "/opt/homebrew/opt/coreutils/libexec/gnuman"
     #GNU utils are good
+    PrependPath "/opt/homebrew/bin"
     PrependPath "/opt/homebrew/opt/coreutils/libexec/gnubin"
     PrependPath "/opt/homebrew/share/python"
     # Now edit the pythonpath
