@@ -30,7 +30,8 @@ then
   sync_tv() {
     if [ -d "/Volumes/Data" ]; then
       cd /Volumes/Data && \
-      rsync -vadmhPi --no-p --no-t --append-verify --log-file=.rsync.tv.log --exclude-from=.rsync.excludes $@ pancake:files/"TV\ Shows" ./files/
+      rsync -vadmhPi --no-p --no-t --append-verify --log-file=.rsync.tv.log --exclude-from=.rsync.excludes $@ \
+      pancake:files/"TV\ Shows" ./files/
     else
       echo "External drive not found. Stopping."
     fi
@@ -39,7 +40,8 @@ then
   sync_movies() {
     if [ -d "/Volumes/Data" ]; then
       cd /Volumes/Data && \
-      rsync -vadmhPi --no-p --no-t --append-verify --log-file=.rsync.movies.log --exclude-from=.rsync.excludes $@ pancake:files/Movies ./files/
+      rsync -vadmhPi --no-p --no-t --append-verify --log-file=.rsync.movies.log --exclude-from=.rsync.excludes $@ \
+      pancake:files/Movies ./files/
     else
       echo "External drive not found. Stopping."
     fi
@@ -48,7 +50,8 @@ then
   sync_music() {
     if [ -d "/Volumes/Data" ]; then
       cd /Volumes/Data && \
-      rsync -vadmhPi --no-p --no-t --append-verify --log-file=.rsync.music.log --exclude-from=.rsync.excludes.with.music $@ pancake:files/Music ./files/
+      rsync -vadmhPi --no-p --no-t --append-verify --log-file=.rsync.music.log --exclude-from=.rsync.excludes.with.music $@ \
+      pancake:files/Music ./files/
     else
       echo "External drive not found. Stopping."
     fi
