@@ -5,27 +5,36 @@ if [ -f ~/.bashrc ]; then
 	. ~/.bashrc
 fi
 
-#fink setup
-if [ -f /sw/bin/init.sh ]; then
-	. /sw/bin/init.sh
-fi
-
 PrependPath(){
     if [ $# == 1 ];then
+        [[ `echo "$PATH"|grep $1` ]] && return
         if [ -d $1 ] || [ -f $1 ]; then
            export PATH="$1:$PATH"
         fi
     else
-        if [ -d $1 ] || [ -f $1 ]; then
-            export $1="$2:$1"
-        fi
-    fi  
+        [[ $(echo "${!1}"|grep "$2") ]] && return
+        if [ -d $2 ] || [ -f $2 ]; then
+            if [ "${!1}" != "" ]; then
+                export "$1"="$2:${!1}"
+            else
+                export "$1"="$2"
+    fi  fi  fi  
 }
 
 AppendPath(){
-    if [ -d $1 ] || [ -f $1 ]; then
-       export PATH="$PATH:$1"
-    fi
+    if [ $# == 1 ];then
+        [[ `echo "$PATH"|grep $1` ]] && return
+        if [ -d $1 ] || [ -f $1 ]; then
+            export PATH="$PATH:$1"
+        fi
+    else 
+        [[ $(echo "${!1}"|grep "$2") ]] && return
+        if [ -d $2 ] || [ -f $2 ]; then
+            if [ "${!1}" != "" ]; then
+                export "$1"="${!1}:$2"
+            else
+                export "$1"="$2"
+    fi  fi  fi  
 }
 
 
@@ -46,7 +55,8 @@ fi
 
 PrependPath "$HOME/bin"
 PrependPath "$HOME/local/bin"
-AppendPath "/sbin:/usr/sbin"
+AppendPath "/sbin"
+AppendPath "/usr/sbin"
 
 #Arm Development stuff
 AppendPath "$HOME/local/yagarto/yagarto-4.6.0/bin"
@@ -69,8 +79,14 @@ if [ `uname` == 'Darwin' ]; then
     PrependPath MANPATH "/opt/homebrew/opt/coreutils/libexec/gnuman"
     #GNU utils are good
     PrependPath "/opt/homebrew/opt/coreutils/libexec/gnubin"
+    PrependPath "/opt/homebrew/share/python"
     # Now edit the pythonpath
-	export PYTHONPATH=/opt/local/lib/python/site-packages:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/site-packages/
+    #Path for MacPorts
+	AppendPath PYTHONPATH "/opt/local/lib/python/site-packages"
+    AppendPath PYTHONPATH "/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/site-packages"
+    AppendPath PYTHONPATH "/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages"
+
+    AppendPath PYTHONPATH "/opt/homebrew/lib/python2.7/site-packages"
 fi
 
 
