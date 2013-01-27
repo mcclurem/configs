@@ -28,11 +28,12 @@ then
 
   # tried-and-true rsync options
   RSYNC_CMD="rsync -v -madPhi --no-p --no-t --append-verify"
+  DATA_DIR="/Volumes/Data"
 
   # tip: pass --dry-run or --bwlimit=KBPS
   sync_tv() {
-    if [ -d "/Volumes/Data" ]; then
-      cd /Volumes/Data && \
+    if [ -d $DATA_DIR ]; then
+      cd $DATA_DIR && \
       $RSYNC_CMD --exclude-from=.rsync.excludes $@ \
       pancake:files/"TV\ Shows" ./files/
     else
@@ -41,8 +42,8 @@ then
   }
 
   sync_movies() {
-    if [ -d "/Volumes/Data" ]; then
-      cd /Volumes/Data && \
+    if [ -d $DATA_DIR ]; then
+      cd $DATA_DIR && \
       $RSYNC_CMD --exclude-from=.rsync.excludes $@ \
       pancake:files/Movies ./files/
     else
@@ -51,8 +52,8 @@ then
   }
 
   sync_music() {
-    if [ -d "/Volumes/Data" ]; then
-      cd /Volumes/Data && \
+    if [ -d $DATA_DIR ]; then
+      cd $DATA_DIR && \
       $RSYNC_CMD --exclude-from=.rsync.excludes.with.music $@ \
       pancake:files/Music ./files/
     else
@@ -61,8 +62,8 @@ then
   }
 
   sync_other() {
-    if [ -d "/Volumes/Data" ]; then
-      cd /Volumes/Data && \
+    if [ -d $DATA_DIR ]; then
+      cd $DATA_DIR && \
       $RSYNC_CMD $@ pancake:files/Other ./files/
     else
       echo "External drive not found. Stopping."
