@@ -21,9 +21,7 @@ do
   # START authorized_keys specific stuff
   if [ $FILE == 'authorized_keys' ]; then
     # ensure ssh dir exists
-    if [ -d "$HOME/.ssh" ]; then
-      echo "ssh dir exists"
-    else
+    if [ ! -d "$HOME/.ssh" ]; then
       echo "no ssh dir, creating"
       mkdir "$HOME/.ssh"
     fi
