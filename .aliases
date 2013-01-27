@@ -75,7 +75,7 @@ then
   sync_all() {
     if [ -d $DATA_DIR ]; then
       cd $DATA_DIR && \
-      $RSYNC_CMD --exclude-from=.rsync.excludes $@ \
+      $RSYNC_CMD $@ \
       pancake:files .
     else
       echo "External drive not found. Stopping."
