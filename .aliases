@@ -132,6 +132,7 @@ alias epoch="date +%s"
 we_have apg && alias password-generator='apg -qsa 0 -n 6 -m 8 -x 8 -E "Il1|0O" -M snCl'
 
 # allow subl over ssh
+# NOTE: this could be customized for any $EDITOR
 subl-ssh() {
   if [ -z "$2" ]; then echo "Usage: subl-ssh server file" && return; fi
   scp -q $1:$2 /tmp/$2 2>/dev/null && \
