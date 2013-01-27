@@ -3,7 +3,7 @@
 
 # checks if we have a program
 # we_have program name returns boolean
-function we_have() {
+we_have() {
   RETVAL=true
   for program in "$@"; do
     [ -z "$(which $program 2>/dev/null)" ] && RETVAL=false
