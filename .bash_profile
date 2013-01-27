@@ -1,10 +1,5 @@
 #~/.bash_profile
 
-# Get the aliases and functions
-if [ -f ~/.bashrc ]; then
-	. ~/.bashrc
-fi
-
 PrependPath(){
     if [ $# == 1 ];then
         [[ `echo "$PATH"|grep $1` ]] && return
@@ -65,10 +60,9 @@ AppendPath "$HOME/local/src/ct/bin"
 #Linux Arm dev stuff
 AppendPath "$HOME/local/arm/bin"
 
-
-
-#Macports stuff
+#Mac specific path settings
 if [ `uname` == 'Darwin' ]; then
+    #Macports stuff
 	# Adding an appropriate PATH variable for use with MacPorts.
 	PrependPath "/Users/mcclurem/.gem/ruby/1.8/bin"
     PrependPath "/opt/local/bin:/opt/local/sbin"
@@ -85,9 +79,13 @@ if [ `uname` == 'Darwin' ]; then
 	AppendPath PYTHONPATH "/opt/local/lib/python/site-packages"
     AppendPath PYTHONPATH "/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/site-packages"
     AppendPath PYTHONPATH "/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages"
-
+    #Path for homebrew
     AppendPath PYTHONPATH "/opt/homebrew/lib/python2.7/site-packages"
 fi
 
 
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+	. ~/.bashrc
+fi
 
