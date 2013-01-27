@@ -1,2 +1,2 @@
-export rvm_path="/Users/dmerrick/.rvm"
+export rvm_path="$HOME/.rvm"
 rvm_auto_reload_flag=1
