@@ -64,7 +64,8 @@ then
   sync_other() {
     if [ -d $DATA_DIR ]; then
       cd $DATA_DIR && \
-      $RSYNC_CMD $@ pancake:files/Other ./files/
+      $RSYNC_CMD $@ \
+      pancake:files/Other ./files/
     else
       echo "External drive not found. Stopping."
     fi
