@@ -70,6 +70,17 @@ then
     fi
   }
 
+  # be careful with this
+  sync_all() {
+    if [ -d $DATA_DIR ]; then
+      cd $DATA_DIR && \
+      $RSYNC_CMD --exclude-from=.rsync.excludes $@ \
+      pancake:files .
+    else
+      echo "External drive not found. Stopping."
+    fi
+  }
+
 else
   alias ls='ls --color=always'
 fi
