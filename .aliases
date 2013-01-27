@@ -30,7 +30,7 @@ then
   sync_tv() {
     if [ -d "/Volumes/Data" ]; then
       cd /Volumes/Data && \
-      rsync -vadmhPi --no-p --no-t --append-verify --exclude-from=.rsync.excludes $@ \
+      rsync -v -madPhi --no-p --no-t --append-verify --exclude-from=.rsync.excludes $@ \
       pancake:files/"TV\ Shows" ./files/
     else
       echo "External drive not found. Stopping."
