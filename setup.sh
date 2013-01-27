@@ -14,7 +14,7 @@ fi
 
 CONFDIR="$HOME/configs"
 FILES=`ls -A $CONFDIR|grep -v "\.git$"|grep -v ".gitignore"|grep -v "setup.sh"|grep -v "old_configs"|grep -v "README"`
-echo $FILES;
+echo $FILES
 
 for FILE in $FILES
 do
@@ -22,28 +22,28 @@ do
   if [ $FILE == 'authorized_keys' ]; then
     # ensure ssh dir exists
     if [ ! -d "$HOME/.ssh" ]; then
-      echo "no ssh dir, creating"
+      echo "No ssh dir; creating one for you."
       mkdir "$HOME/.ssh"
     fi
     # symlink exists:
     if [ -L "$HOME/.ssh/authorized_keys" ]; then
-      echo "Symlink for authorized_keys already existed, skipping ..."
+      echo "Symlink for authorized_keys already existed, moving on."
       continue
     fi
     # we already have a file there
     if [ -f "$HOME/.ssh/authorized_keys" ] && [ `diff "$HOME/.ssh/authorized_keys" "$CONFDIR/authorized_keys"|head -n1` ]; then
-      echo -e "The file $FILE already exists, here is the difference:"
+      echo -e "The file $FILE already exists, here are the differences:"
       diff "$HOME/.ssh/authorized_keys" "$CONFDIR/authorized_keys"
-      echo "\n\nDo you want to replace it with the new one?[y/n]"
+      echo "\n\nDo you want to replace it with the new one? [y/n]"
       read USERINPUT
       #Its a bit confusing, but this says, if NOT 'y' then do
       if [ "$USERINPUT" == "${USERINPUT#[Yy]}" ]; then
-        echo "Not replacing the authorized keys file"
+        echo "Not replacing the authorized keys file."
         continue
       fi
     fi
     # if we have gotten here then we are good to do things
-    echo "Replacing/Adding new authorized key file..."
+    echo "Replacing/adding new authorized key file..."
     cd "$HOME/.ssh"
     rm -i "$HOME/.ssh/authorized_keys"
     ln -s "$HOME/configs/authorized_keys" "$HOME/.ssh/"
@@ -54,7 +54,7 @@ do
   fi
   # END authorized_keys specific stuff
 
-  # if the symlink exists, don't worry anymore
+  # if the symlink exists, move onto the next file silently
   if [ -L "$HOME/$FILE" ]; then
     continue
   fi
@@ -65,18 +65,19 @@ do
     if [ `diff "$CONFDIR/$FILE" "$HOME/$FILE"|head -n1` ];
     then
       # file already exists its up to you to fix it
-      echo -e "The file $FILE already exists, here is the difference:"
+      echo -e "The file $FILE already exists, here are the differences:"
+      #FIXME: make this prettier
       diff "$CONFDIR/$FILE" "$HOME/$FILE"
       echo ""
       continue
     else
-      echo -e "The file $FILE already exists but I didn't see any differences so I went ahead and replaced it with a symlink"
+      echo -e "The file $FILE existed but was identical; replaced it with symlink."
       rm "$HOME/$FILE"
       ln -s "$CONFDIR/$FILE" "$HOME/$FILE"
       continue
     fi
   else
-    echo -e "The file didn't exist so I'm adding $FILE"
+    echo -e "The file $FILE didn't exist so a symlink was created."
     ln -s "$CONFDIR/$FILE" "$HOME/$FILE"
   fi
 
