@@ -26,11 +26,14 @@ if [ `uname` == 'Darwin' ];
 then
   alias ls='ls -G'
 
+  # tried-and-true rsync options
+  RSYNC_CMD="rsync -v -madPhi --no-p --no-t --append-verify"
+
   # tip: pass --dry-run or --bwlimit=KBPS
   sync_tv() {
     if [ -d "/Volumes/Data" ]; then
       cd /Volumes/Data && \
-      rsync -v -madPhi --no-p --no-t --append-verify --exclude-from=.rsync.excludes $@ \
+      $RSYNC_CMD --exclude-from=.rsync.excludes $@ \
       pancake:files/"TV\ Shows" ./files/
     else
       echo "External drive not found. Stopping."
@@ -40,7 +43,7 @@ then
   sync_movies() {
     if [ -d "/Volumes/Data" ]; then
       cd /Volumes/Data && \
-      rsync -v -madPhi --no-p --no-t --append-verify --exclude-from=.rsync.excludes $@ \
+      $RSYNC_CMD --exclude-from=.rsync.excludes $@ \
       pancake:files/Movies ./files/
     else
       echo "External drive not found. Stopping."
@@ -50,7 +53,7 @@ then
   sync_music() {
     if [ -d "/Volumes/Data" ]; then
       cd /Volumes/Data && \
-      rsync -v -madPhi --no-p --no-t --append-verify --exclude-from=.rsync.excludes.with.music $@ \
+      $RSYNC_CMD --exclude-from=.rsync.excludes.with.music $@ \
       pancake:files/Music ./files/
     else
       echo "External drive not found. Stopping."
@@ -60,7 +63,7 @@ then
   sync_other() {
     if [ -d "/Volumes/Data" ]; then
       cd /Volumes/Data && \
-      rsync -v -madPhi --no-p --append-verify $@ pancake:files/Other ./files/
+      $RSYNC_CMD $@ pancake:files/Other ./files/
     else
       echo "External drive not found. Stopping."
     fi
