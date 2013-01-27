@@ -40,7 +40,7 @@ then
   sync_movies() {
     if [ -d "/Volumes/Data" ]; then
       cd /Volumes/Data && \
-      rsync -vadmhPi --no-p --no-t --append-verify --exclude-from=.rsync.excludes $@ \
+      rsync -v -madPhi --no-p --no-t --append-verify --exclude-from=.rsync.excludes $@ \
       pancake:files/Movies ./files/
     else
       echo "External drive not found. Stopping."
@@ -50,7 +50,7 @@ then
   sync_music() {
     if [ -d "/Volumes/Data" ]; then
       cd /Volumes/Data && \
-      rsync -vadmhPi --no-p --no-t --append-verify --exclude-from=.rsync.excludes.with.music $@ \
+      rsync -v -madPhi --no-p --no-t --append-verify --exclude-from=.rsync.excludes.with.music $@ \
       pancake:files/Music ./files/
     else
       echo "External drive not found. Stopping."
@@ -60,7 +60,7 @@ then
   sync_other() {
     if [ -d "/Volumes/Data" ]; then
       cd /Volumes/Data && \
-      rsync -vadmhPi --no-p --append-verify $@ pancake:files/Other ./files/
+      rsync -v -madPhi --no-p --append-verify $@ pancake:files/Other ./files/
     else
       echo "External drive not found. Stopping."
     fi
