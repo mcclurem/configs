@@ -44,17 +44,17 @@ if [ -f ~/.aliases.sh ]; then
 fi
 
 # sensitive or host-specific data goes in here
-if [ -f $HOME/.bash_profile.private ]; then
-  source $HOME/.bash_profile.private
+if [ -f ~/.bash_profile.private ]; then
+  source ~/.bash_profile.private
 fi
 
 # load git-prompt if available, else use .bash_prompt
-if [ -f $HOME/other_projects/git-prompt/git-prompt.sh ]; then
+if [ -f ~/other_projects/git-prompt/git-prompt.sh ]; then
   # mkdir -p ~/other_projects
   # git clone https://github.com/dmerrick/git-prompt.git ~/other_projects/git-prompt
-  . $HOME/other_projects/git-prompt/git-prompt.sh
+  . ~/other_projects/git-prompt/git-prompt.sh
 elif [ -f ~/.bash_prompt ]; then
-  . $HOME/.bash_prompt
+  . ~/.bash_prompt
 else
   PS1='$PWD > '
 fi

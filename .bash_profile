@@ -11,7 +11,7 @@ fi
 export PATH=$PATH:$HOME/bin:/sbin:/usr/sbin
 
 # RVM settings
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+[[ -s ~/.rvm/scripts/rvm ]] && source ~/.rvm/scripts/rvm
 #export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH
 
 # if we have keychain then we rock
