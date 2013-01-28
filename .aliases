@@ -30,11 +30,14 @@ then
   RSYNC_CMD="rsync -v -madPhi --no-p --no-t --append-verify"
   DATA_DIR="/Volumes/Data"
 
+  # instead of exludes files, we could use something like this:
+  # --include '*/' --include '*.mp3' --include '*.flac' --exclude '*'
+
   # tip: pass --dry-run or --bwlimit=KBPS
   sync_tv() {
     if [ -d $DATA_DIR ]; then
       cd $DATA_DIR && \
-      $RSYNC_CMD --exclude-from=.rsync.excludes $@ \
+      $RSYNC_CMD --exclude-from=.exclude_all_but_video $@ \
       pancake:files/"TV\ Shows" ./files/
     else
       echo "External drive not found. Stopping."
@@ -44,7 +47,7 @@ then
   sync_movies() {
     if [ -d $DATA_DIR ]; then
       cd $DATA_DIR && \
-      $RSYNC_CMD --exclude-from=.rsync.excludes $@ \
+      $RSYNC_CMD --exclude-from=.exclude_all_but_video $@ \
       pancake:files/Movies ./files/
     else
       echo "External drive not found. Stopping."
@@ -54,7 +57,7 @@ then
   sync_music() {
     if [ -d $DATA_DIR ]; then
       cd $DATA_DIR && \
-      $RSYNC_CMD --exclude-from=.rsync.excludes.with.music $@ \
+      $RSYNC_CMD --exclude-from=.exclude_all_but_audio $@ \
       pancake:files/Music ./files/
     else
       echo "External drive not found. Stopping."
