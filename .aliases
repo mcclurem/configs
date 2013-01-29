@@ -33,7 +33,7 @@ then
   # instead of exludes files, we could use something like this:
   # --include '*/' --include '*.mp3' --include '*.flac' --exclude '*'
 
-  # tip: pass --dry-run or --bwlimit=KBPS
+  # tip: pass --dry-run or --bwlimit=KBPS or --stats
   sync_tv() {
     if [ -d $DATA_DIR ]; then
       cd $DATA_DIR && \
@@ -59,6 +59,16 @@ then
       cd $DATA_DIR && \
       $RSYNC_CMD --exclude-from=.exclude_all_but_audio $@ \
       pancake:files/Music ./files/
+    else
+      echo "External drive not found. Stopping."
+    fi
+  }
+
+  sync_audiobooks() {
+    if [ -d $DATA_DIR ]; then
+      cd $DATA_DIR && \
+      $RSYNC_CMD $@ \
+      pancake:files/Audiobooks ./files/
     else
       echo "External drive not found. Stopping."
     fi
