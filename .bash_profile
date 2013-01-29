@@ -64,10 +64,12 @@ AppendPath "$HOME/local/arm/bin"
 
 #Mac specific path settings
 if [ `uname` == 'Darwin' ]; then
+    echo "DARWIN"
     #Macports stuff
 	# Adding an appropriate PATH variable for use with MacPorts.
 	PrependPath "/Users/mcclurem/.gem/ruby/1.8/bin"
-    PrependPath "/opt/local/bin:/opt/local/sbin"
+    PrependPath "/opt/local/sbin"
+    PrependPath "/opt/local/bin"
     AppendPath "/Users/mcclurem/local/avr/bin"
 	# Adding an appropriate MANPATH variable for use with MacPorts.
 	PrependPath MANPATH "/opt/local/share/man"
