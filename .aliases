@@ -29,70 +29,53 @@ then
   # tried-and-true rsync options
   RSYNC_CMD="rsync -v -madPhi --no-p --no-t --append-verify"
   DATA_DIR="/Volumes/Data"
+  NODATAMSG="External drive not found. Stopping."
 
   # instead of exludes files, we could use something like this:
   # --include '*/' --include '*.mp3' --include '*.flac' --exclude '*'
 
   # tip: pass --dry-run or --bwlimit=KBPS or --stats
   sync_tv() {
-    if [ -d $DATA_DIR ]; then
-      cd $DATA_DIR && \
-      $RSYNC_CMD --exclude-from=.exclude_all_but_video $@ \
-      pancake:files/"TV\ Shows" ./files/
-    else
-      echo "External drive not found. Stopping."
-    fi
+    [ ! -d $DATA_DIR ] && echo $NODATAMSG && return 1
+    cd $DATA_DIR && \
+    $RSYNC_CMD --exclude-from=.exclude_all_but_video $@ \
+    pancake:files/"TV\ Shows" ./files/
   }
 
   sync_movies() {
-    if [ -d $DATA_DIR ]; then
-      cd $DATA_DIR && \
-      $RSYNC_CMD --exclude-from=.exclude_all_but_video $@ \
-      pancake:files/Movies ./files/
-    else
-      echo "External drive not found. Stopping."
-    fi
+    [ ! -d $DATA_DIR ] && echo $NODATAMSG && return 1
+    cd $DATA_DIR && \
+    $RSYNC_CMD --exclude-from=.exclude_all_but_video $@ \
+    pancake:files/Movies ./files/
   }
 
   sync_music() {
-    if [ -d $DATA_DIR ]; then
-      cd $DATA_DIR && \
-      $RSYNC_CMD --exclude-from=.exclude_all_but_audio $@ \
-      pancake:files/Music ./files/
-    else
-      echo "External drive not found. Stopping."
-    fi
+    [ ! -d $DATA_DIR ] && echo $NODATAMSG && return 1
+    cd $DATA_DIR && \
+    $RSYNC_CMD --exclude-from=.exclude_all_but_audio $@ \
+    pancake:files/Music ./files/
   }
 
   sync_audiobooks() {
-    if [ -d $DATA_DIR ]; then
-      cd $DATA_DIR && \
-      $RSYNC_CMD $@ \
-      pancake:files/Audiobooks ./files/
-    else
-      echo "External drive not found. Stopping."
-    fi
+    [ ! -d $DATA_DIR ] && echo $NODATAMSG && return 1
+    cd $DATA_DIR && \
+    $RSYNC_CMD $@ \
+    pancake:files/Audiobooks ./files/
   }
 
   sync_other() {
-    if [ -d $DATA_DIR ]; then
-      cd $DATA_DIR && \
-      $RSYNC_CMD $@ \
-      pancake:files/Other ./files/
-    else
-      echo "External drive not found. Stopping."
-    fi
+    [ ! -d $DATA_DIR ] && echo $NODATAMSG && return 1
+    cd $DATA_DIR && \
+    $RSYNC_CMD $@ \
+    pancake:files/Other ./files/
   }
 
   # be careful with this
   sync_all() {
-    if [ -d $DATA_DIR ]; then
-      cd $DATA_DIR && \
-      $RSYNC_CMD $@ \
-      pancake:files .
-    else
-      echo "External drive not found. Stopping."
-    fi
+    [ ! -d $DATA_DIR ] && echo $NODATAMSG && return 1
+    cd $DATA_DIR && \
+    $RSYNC_CMD $@ \
+    pancake:files .
   }
 
 else
