@@ -39,35 +39,35 @@ then
     [ ! -d $DATA_DIR ] && echo $NODATAMSG && return 1
     cd $DATA_DIR && \
     $RSYNC_CMD --exclude-from=.exclude_all_but_video $@ \
-    pancake:files/"TV\ Shows" ./files/
+    pancake:files/"TV\ Shows" files/
   }
 
   sync_movies() {
     [ ! -d $DATA_DIR ] && echo $NODATAMSG && return 1
     cd $DATA_DIR && \
     $RSYNC_CMD --exclude-from=.exclude_all_but_video $@ \
-    pancake:files/Movies ./files/
+    pancake:files/Movies files/
   }
 
   sync_music() {
     [ ! -d $DATA_DIR ] && echo $NODATAMSG && return 1
     cd $DATA_DIR && \
     $RSYNC_CMD --exclude-from=.exclude_all_but_audio $@ \
-    pancake:files/Music ./files/
+    pancake:files/Music files/
   }
 
   sync_audiobooks() {
     [ ! -d $DATA_DIR ] && echo $NODATAMSG && return 1
     cd $DATA_DIR && \
     $RSYNC_CMD $@ \
-    pancake:files/Audiobooks ./files/
+    pancake:files/Audiobooks files/
   }
 
   sync_other() {
     [ ! -d $DATA_DIR ] && echo $NODATAMSG && return 1
     cd $DATA_DIR && \
     $RSYNC_CMD $@ \
-    pancake:files/Other ./files/
+    pancake:files/Other files/
   }
 
   # be careful with this
