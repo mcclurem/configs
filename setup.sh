@@ -12,6 +12,9 @@ FILES=`ls -A $CONFDIR|grep -v "\.svn"|grep -v "setup.sh"`
 echo $FILES;
 for FILE in $FILES
 do
+    if [ $FILE == 'README.md' ]; then
+        continue
+    fi
 #Specific stuff for the auth key file:
 	if [ $FILE == 'authorized_keys' ]; then
         #ensure ssh dir exists

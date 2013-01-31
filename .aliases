@@ -18,6 +18,8 @@ alias lsal='ls -lAh'
 alias LS='ls'
 alias ..='cd ..; ls'
 alias eix-sync='sudo eix-sync'
+alias sshiphone='killall -9 tcprelay; tcprelay --portoffset=2000 22 & ssh iphone && killall -9 tcprelay'
+
 
 #alias s!='command sudo `!!`'
 alias bleedkerninst='mount /boot && make && make modules_install && cp arch/i386/boot/bzImage /boot/bleedingkernel-2.6.17-gentoo-r4'
