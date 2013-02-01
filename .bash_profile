@@ -73,6 +73,8 @@ if [ `uname` == 'Darwin' ]; then
     AppendPath "/Users/mcclurem/local/avr/bin"
 	# Adding an appropriate MANPATH variable for use with MacPorts.
 	PrependPath MANPATH "/opt/local/share/man"
+    #Macports installs mysql to a dumb location
+    AppendPath "/opt/local/lib/mysql5/bin"
     # Manpath for gnuutils
     PrependPath MANPATH "/opt/homebrew/opt/coreutils/libexec/gnuman"
     #GNU utils are good
