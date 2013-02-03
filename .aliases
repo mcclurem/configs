@@ -78,6 +78,17 @@ then
     pancake:files .
   }
 
+  check_all() {
+    echo -e "*** Checking TV shows..."
+    sync_tv -n --no-verbose
+    echo -e "*** Checking Movies..."
+    sync_movies -n --no-verbose
+    echo -e "*** Checking Music..."
+    sync_music -n --no-verbose
+    echo -e "*** Checking Other..."
+    sync_other -n --no-verbose
+  }
+
 else
   alias ls='ls --color=always'
 fi
