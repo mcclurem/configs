@@ -93,6 +93,10 @@ else
   alias ls='ls --color=always'
 fi
 
+# host shortcuts
+alias pancake='ssh pancake'
+alias bacon='ssh bacon'
+
 alias b='bundle exec'
 
 # common typos
