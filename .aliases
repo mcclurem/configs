@@ -84,6 +84,7 @@ then
     echo -e "*** Checking Movies..."
     sync_movies -n --no-verbose
     echo -e "*** Checking Music..."
+    echo -e "*** (this may take a few minutes)"
     sync_music -n --no-verbose
     echo -e "*** Checking Other..."
     sync_other -n --no-verbose
