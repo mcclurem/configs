@@ -75,6 +75,7 @@ if [ `uname` == 'Darwin' ]; then
 	PrependPath MANPATH "/opt/local/share/man"
     #Macports installs mysql to a dumb location
     AppendPath "/opt/local/lib/mysql5/bin"
+    AppendPath "/opt/local/lib/mysql55/bin"
     # Manpath for gnuutils
     PrependPath MANPATH "/opt/homebrew/opt/coreutils/libexec/gnuman"
     #GNU utils are good
