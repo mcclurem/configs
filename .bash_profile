@@ -79,6 +79,8 @@ if [ `uname` == 'Darwin' ]; then
     # Manpath for gnuutils
     PrependPath MANPATH "/opt/homebrew/opt/coreutils/libexec/gnuman"
     #GNU utils are good
+    PrependPath "/opt/local/libexec/gnubin/"
+    PrependPath "/opt/local/libexec/gnubin/"
     PrependPath "/opt/homebrew/bin"
     PrependPath "/opt/homebrew/opt/coreutils/libexec/gnubin"
     PrependPath "/opt/homebrew/share/python"
