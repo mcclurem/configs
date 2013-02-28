@@ -98,3 +98,27 @@ if [ -f ~/.bashrc ]; then
 	. ~/.bashrc
 fi
 
+case $HOSTNAME in
+    *ees-lin* )
+        export TOOLSROOT="/tools"
+        export VERSION_OSVER="v1.44"
+        export CDSPROGS="$TOOLSROOT/vendor/cadencepe/cds_user_progs"
+        # unset CDS_OPTOUT to deal with cadence tools being in bin and bin2 - per RT#38456 - 20060831 -- jcw
+        unset CDS_OPTOUT
+        # Old (pre Sep 2002) wrapper stuff
+        export TOOLMAP_ENTRY="/"
+        export TOOLMAP_DEFAULT_DIR="$TOOLSROOT/etc"
+        export TOOLMAP_VERSIONS=".:"$HOME":$TOOLMAP_DEFAULT_DIR"
+        export TOOLMAP_BIN="$TOOLSROOT/release"
+        # added temporarily until wrapper is created for ads 28mar01 -- jcw
+        export ADS="$TOOLSROOT/vendor/ads"
+        export PATH="/tools/freeware/bin:/tools/local/bin:/tools/local/scripts/bin:/tools/vendor/bin:/usr/X11R6/bin:/tools/local/exe:/tools/vendor/exe:/tools/vendor/cadencepe/cds_user_progs:/usr/ucb:$PATH"
+        export VENDORTOOLSROOT="$TOOLSROOT/vendor"
+        export P4PORT="smtp4.apple.com:1661"
+        export PATHTO_PERL="/tools/freeware/perl/perl-5.12.1/build/Linux_2.6EL_x86_64/bin/perl"
+        export VERSION_PERL="perl-5.12.1"
+        # RT #35097
+        export CDS_LIB="$TOOLSROOT/local/`whichver CDS_LIB_VER`"
+        ;;
+esac
+
