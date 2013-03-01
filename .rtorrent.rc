@@ -1,0 +1,94 @@
+################################################################################
+## WhatBox Configuration file for rTorrent.                                   ##
+## Last updated Mar/1/2012 by ancient                                          ##
+##   If you choose to edit this file, there are a couple of things to note:   ##
+##   1. Be sure this file is saved with \n (LF) line breaks.  If you're       ##
+##      connecting via SSH and using nano (or similar), this shouldn't be a   ##
+##      problem.  However, if you're on Windows and are (S)FTP'ing the file   ##
+##      to your computer, there's a chance that the line breaks may change.   ##
+##      If there aren't LF line breaks, rTorrent will not start.              ##
+##   2. Please respect the fact that this is a shared server.  Hash checking  ##
+##      on completion is disabled because most times it will spike the load   ##
+##      while it's checking the files.  For large torrents, this can take a   ##
+##      very long time, and generally isn't even needed.                      ##
+##   3. peer_exchange and dht should remain off.  These aren't used on        ##
+##      private trackers, and therefore there should be no reason to turn     ##
+##      them on.                                                              ##
+##   4. scgi_local must not be changed, in order for ruTorrent (and wTorrent) ##
+##      to work.  If you choose to use nTorrent or have another reason to     ##
+##      connect to rTorrent using xmlrpc, you can access it through HTTP      ##
+##      using: Protocol: HTTP. Host: (server).whatbox.ca. Port: 80.           ##
+##        Mountpoint: /RPC.(username). Username: (username).                  ##
+##        Password: (password).  Replace (server), (username), and (password) ##
+##        with your actual server, username, and password.                    ##
+################################################################################
+
+
+## These control where rTorrent looks for .torrents and where files are saved
+directory.default.set = ~/files
+schedule = watch_directory,5,5,load.start=~/watch/*.torrent
+#schedule = untied_directory,5,5,close_untied=
+
+
+# dana added:
+system.method.set_key = event.download.finished,notify_finished,"execute=~/other_projects/lights_app/bin/flash.rb,--bridge,lights.mathgaming.tv,-l2"
+system.method.set_key = event.download.inserted_new,notify_inserted_new,"execute=~/other_projects/lights_app/bin/flash.rb,--bridge,lights.mathgaming.tv,-l2,-c,green"
+
+#################################################
+## These settings are mostly user customizable ##
+#################################################
+trackers.use_udp.set = yes
+# Upload/download rate in KB/s. 0 for unlimited
+throttle.global_down.max_rate.set_kb = 0
+throttle.global_up.max_rate.set_kb = 0
+
+# Maximum and minimum number of peers to connect to per torrent.
+#min_peers = 40
+#max_peers = 100
+# Same as above but for seeding completed torrents (-1 = same as downloading)
+#min_peers_seed = 10
+#max_peers_seed = 50
+# Maximum number of simultanious uploads per torrent.
+#max_uploads = 15
+# Example of stop on ratio: Stops if ratio's 2.00 with at least 200MB up, 
+# otherwise stop at a ratio of 20.00
+#schedule = ratio,60,60,"stop_on_ratio=200,200M,2000"
+
+#################################################
+## These settings shouldn't need to be changed ##
+#################################################
+encoding.add = UTF-8
+network.port_range.set = 61000-61100
+network.port_random.set = yes
+protocol.encryption.set = allow_incoming,enable_retry,try_outgoing
+
+
+# If there's less than 5GB of disk space, it will stop torrents from 
+# downloading.  Keep in mind that we receive alerts about low disk space, so
+# it shouldn't actually get this low.  However, if the server runs out of space,
+# all of the rTorrents will lock up, eating all of the CPU and spiking loads.
+schedule = low_diskspace,5,60,close_low_diskspace=5120M
+
+# This chmods the downloaded files to 770.  This will allow them to be deleted
+# by w/ruTorrent, while not allowing any other users to touch them.
+system.umask.set = 007
+
+# XMLRPC Size Limit
+# This should allow ~3200 torrents in ruTorrent.  Any higher and I'd be surprised
+# if ruTorrent could handle it.
+set_xmlrpc_size_limit = 2097152
+
+#ruTorrent plugins
+execute = {sh,-c,/usr/bin/php /var/www/rutorrent/php/initplugins.php &}
+
+#########################################
+## These settings shouldn't be changed ##
+#########################################
+network.scgi.open_local = ~/.config/rtorrent/socket
+session.path.set = ~/.config/rtorrent/session
+pieces.hash.on_completion.set = no
+dht.mode.set = off
+pieces.memory.max.set = 768M
+protocol.pex.set = no
+#system.hash.interval.set = 1000
+#system.hash.max_tries.set = 2
