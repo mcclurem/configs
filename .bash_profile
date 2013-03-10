@@ -43,6 +43,7 @@ if [ `uname` == 'Darwin' ]; then
     export PATH="$PATH:$HOME/local/yagarto/yagarto-4.6.0/bin"
     export PATH="$PATH:$HOME/local/yagarto/yagarto-4.6.0/tools"
     export PATH="$PATH:$HOME/local/src/ct/bin"
+	export PATH="/usr/local/texlive/2011/bin/x86_64-darwin:$PATH"
 fi
 
 
