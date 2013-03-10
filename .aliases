@@ -6,11 +6,11 @@ alias mv='mv -i'
 alias verb='export VERB=1'
 alias noverb='export VERB=0'
 alias cd..='cd ..'
-if [ `uname` == 'Darwin' ];
+if [ `uname` != 'Darwin' ] || [ `echo $PATH | grep 'gnubin' ` ]
 then
-	alias ls='ls -G'
+	alias ls='ls --color=always -I "*.pyc"'
 else
-	alias ls='ls --color=always'
+	alias ls='ls -G'
 fi
 alias lsa='ls -Ah'
 alias lsl='ls -lh'
@@ -18,9 +18,8 @@ alias lsal='ls -lAh'
 alias LS='ls'
 alias ..='cd ..; ls'
 alias eix-sync='sudo eix-sync'
-alias sshurich='ssh -p 31416 mmcclure@urich'
-alias sshwww='ssh mmcclure@ics.com'
-alias ipodumount='kdeeject /dev/ipod'
+alias sshiphone='killall -9 tcprelay; tcprelay --portoffset=2000 22 & ssh iphone && killall -9 tcprelay'
+
 
 #alias s!='command sudo `!!`'
 alias bleedkerninst='mount /boot && make && make modules_install && cp arch/i386/boot/bzImage /boot/bleedingkernel-2.6.17-gentoo-r4'

@@ -41,12 +41,16 @@ if [ -f /etc/bash_completion ]; then
 	source /etc/bash_completion
 fi
 
+if [ -f /etc/profile.d/bash-completion.sh ]; then
+	source /etc/profile.d/bash-completion.sh
+fi
+
 if [ -f /opt/local/etc/bash_completion ]; then
 	source /opt/local/etc/bash_completion
 fi
 
-if [ -f /etc/profile.d/bash-completion.sh ]; then
-	source /etc/profile.d/bash-completion.sh
+if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
+	source /opt/local/etc/profile.d/bash_completion.sh
 fi
 
 if [ `uname` != 'Darwin' ]; then
@@ -54,7 +58,6 @@ if [ `uname` != 'Darwin' ]; then
 	echo -e "Home Phone:    978-448-6288\nCell Phone:    978-400-6980\n-----\n`uname -o` `uname -rp`\n`uname -n`"> ~/.plan
 fi
 # Grep color options
-  export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
-#IGVC build stuff
-  export IGVCDIR=/Users/mcclurem/code/gamma/trunk/localization
+export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 
+export NANOCOM="-d /dev/cu.kong*"
