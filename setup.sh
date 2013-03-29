@@ -13,6 +13,7 @@ if [ $# != 0 ] && [ $1 == "update" ]; then
 fi
 
 CONFDIR="$HOME/configs"
+#FIXME: gitignore.global doesnt get added
 FILES=`ls -A $CONFDIR|grep -v "\.git$"|grep -v ".gitignore"|grep -v "setup.sh"|grep -v "old_configs"|grep -v "README"`
 echo $FILES
 
