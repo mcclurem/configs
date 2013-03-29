@@ -171,6 +171,8 @@ subl-ssh() {
 
 alias s.="subl ."
 
+alias speedtest="wget -O /dev/null http://cachefly.cachefly.net/100mb.test"
+
 # create a directory shortcut
 #a() { alias $1=cd\ $PWD; }
 
