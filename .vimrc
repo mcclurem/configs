@@ -1,3 +1,5 @@
+execute pathogen#infect()
+au VimEnter * highlight clear SignColumn
 set ruler
 set nu
 set bs=2
@@ -49,3 +51,15 @@ map <Leader>0 :w\|verbose !ngspice -b %<CR>
 
 map <Leader>9 :cn<cr>
 map <Leader>8 :cp<cr>
+
+"CTRL-N for nerdtree
+map <C-n> :NERDTreeToggle<CR>
+" close vim if nertree is only window
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" auto-open nerdtree
+"autocmd vimenter * NERDTree
+
+" open a NERDTree automatically when vim starts up if no files were specified
+autocmd vimenter * if !argc() | NERDTree | endif
+
