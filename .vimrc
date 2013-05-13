@@ -9,6 +9,7 @@ augroup filetype
     au! BufRead,BufNewFile *.pde            set filetype=c
     au! BufRead,BufNewFile *.thtml          set filetype=php
     au! BufRead,BufNewFile *.jobdesc        set filetype=php
+    au! BufRead,BufNewFile *.tex            set filetype=tex
     au! BufRead,BufNewFile *.verilog,*.v    set filetype=verilog
     au! BufRead,BufNewFile *.verilog,*.v    set foldmethod=indent
     au! BufRead,BufNewFile *.c,*.h,*.cpp    set foldmethod=syntax
