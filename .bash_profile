@@ -53,7 +53,9 @@ fi
 PrependPath "$HOME/bin"
 PrependPath "$HOME/local/bin"
 AppendPath "/sbin"
+AppendPath "/bin"
 AppendPath "/usr/sbin"
+AppendPath "/usr/bin"
 
 #Arm Development stuff
 AppendPath "$HOME/local/yagarto/yagarto-4.6.0/bin"
@@ -78,6 +80,7 @@ if [ `uname` == 'Darwin' ]; then
     # Manpath for gnuutils
     PrependPath MANPATH "/opt/homebrew/opt/coreutils/libexec/gnuman"
     #GNU utils are good
+    PrependPath "/opt/local/libexec/gnubin"
     PrependPath "/opt/homebrew/bin"
     PrependPath "/opt/homebrew/opt/coreutils/libexec/gnubin"
     PrependPath "/opt/homebrew/share/python"
@@ -88,6 +91,7 @@ if [ `uname` == 'Darwin' ]; then
     AppendPath PYTHONPATH "/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages"
     #Path for homebrew
     AppendPath PYTHONPATH "/opt/homebrew/lib/python2.7/site-packages"
+    PrependPath "/Applications/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin"
 fi
 
 # Get the aliases and functions

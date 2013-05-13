@@ -14,7 +14,9 @@ augroup filetype
     au! BufRead,BufNewFile *.c,*.h,*.cpp    set foldmethod=syntax
     au! BufRead,BufNewFile *.py             set foldmethod=indent
 augroup END
+
 syntax on
+syn sync fromstart
 filetype plugin on
 filetype indent on
 function ToggleHLSearch()
