@@ -25,3 +25,6 @@ alias sshiphone='killall -9 tcprelay; tcprelay --portoffset=2000 22 & ssh iphone
 alias bleedkerninst='mount /boot && make && make modules_install && cp arch/i386/boot/bzImage /boot/bleedingkernel-2.6.17-gentoo-r4'
 alias 32bitpy='export VERSIONER_PYTHON_PREFER_32_BIT=yes'
 alias dnsflush='sudo killall -HUP mDNSResponder'
+
+alias gits='git status'
+alias gitd='git diff --color'
