@@ -117,6 +117,7 @@ case $HOSTNAME in
         export P4PORT="smtp4.apple.com:1661"
         export PATHTO_PERL="/tools/freeware/perl/perl-5.12.1/build/Linux_2.6EL_x86_64/bin/perl"
         export VERSION_PERL="perl-5.12.1"
+        export P4PORT="smtp4:1661"
         # RT #35097
         export CDS_LIB="$TOOLSROOT/local/`whichver CDS_LIB_VER`"
         ;;
