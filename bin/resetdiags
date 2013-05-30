@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+astrisctl setenv diags 1
+sleep 1
+astrisctl reset
+sleep 1
+astrisctl setenv diags 0

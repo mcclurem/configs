@@ -9,12 +9,15 @@ augroup filetype
     au! BufRead,BufNewFile *.pde            set filetype=c
     au! BufRead,BufNewFile *.thtml          set filetype=php
     au! BufRead,BufNewFile *.jobdesc        set filetype=php
+    au! BufRead,BufNewFile *.tex            set filetype=tex
     au! BufRead,BufNewFile *.verilog,*.v    set filetype=verilog
     au! BufRead,BufNewFile *.verilog,*.v    set foldmethod=indent
     au! BufRead,BufNewFile *.c,*.h,*.cpp    set foldmethod=syntax
     au! BufRead,BufNewFile *.py             set foldmethod=indent
 augroup END
+
 syntax on
+syn sync fromstart
 filetype plugin on
 filetype indent on
 function ToggleHLSearch()
