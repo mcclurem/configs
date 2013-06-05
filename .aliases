@@ -26,5 +26,6 @@ alias bleedkerninst='mount /boot && make && make modules_install && cp arch/i386
 alias 32bitpy='export VERSIONER_PYTHON_PREFER_32_BIT=yes'
 alias dnsflush='sudo killall -HUP mDNSResponder'
 
+alias gitb='git branch'
 alias gits='git status'
 alias gitd='git diff --color'
