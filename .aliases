@@ -74,7 +74,7 @@ then
   sync_all() {
     [ ! -d $DATA_DIR ] && echo $NODATAMSG && return 1
     cd $DATA_DIR && \
-    $RSYNC_CMD $@ \
+    $RSYNC_CMD --dry-run $@ \
     pancake:files .
   }
 
