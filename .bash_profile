@@ -64,6 +64,8 @@ AppendPath "$HOME/local/src/ct/bin"
 #Linux Arm dev stuff
 AppendPath "$HOME/local/arm/bin"
 
+AppendPath "$HOME/altera/13.0/quartus/bin"
+
 #Mac specific path settings
 if [ `uname` == 'Darwin' ]; then
     echo "DARWIN"
