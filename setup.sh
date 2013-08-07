@@ -1,14 +1,8 @@
 #!/bin/bash
 
 
-
-if [ $# != 0 ] && [ $1 == "update" ]; then
-		svn update
-		exit 0
-fi
-
 CONFDIR="$HOME/configs"
-FILES=`ls -A $CONFDIR|grep -v "\.svn"|grep -v "setup.sh"|grep -v "\.git"`
+FILES=`ls -A $CONFDIR | grep -v "setup.sh" | grep -v -e "\.git\b" | grep -v "README" | grep -v "authorized_keys"`
 echo $FILES;
 for FILE in $FILES
 do
