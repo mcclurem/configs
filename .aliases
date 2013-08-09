@@ -30,3 +30,13 @@ alias gitb='git branch'
 alias gits='git status'
 alias gitd='git diff --color'
 alias gitc='git commit'
+
+# makes git 66% smaller
+# (and shows git status if no args)
+g() {
+ if [[ $# == '0' ]]; then
+   git status -sb
+ else
+   git "$@"
+ fi
+}
