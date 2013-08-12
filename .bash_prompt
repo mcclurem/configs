@@ -41,7 +41,7 @@ case $HOSTNAME in
   dmerrick-personal|bacon )
   HOSTC=$YELLOW
   ;;
-  pancake )
+  lyra )
   HOSTC=$BLUE
   ;;
   *)
