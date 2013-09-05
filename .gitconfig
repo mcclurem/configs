@@ -19,7 +19,9 @@
 [alias]
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
   co = checkout
+  cl = clone
   s = status
+  br = branch
 
   a = add
   d = diff
@@ -32,8 +34,20 @@
 
   pr = pull --rebase
   pom = push origin master
+  phm = push heroku master
   p = push
 
   ru = remote update
   ro = rebase origin/master
   r = rebase
+
+  # http://blog.apiaxle.com/post/handy-git-tips-to-stop-you-getting-fired/
+  assume   = update-index --assume-unchanged
+  unassume = update-index --no-assume-unchanged
+  assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
+
+  ours   = "!f() { git checkout --ours $@ && git add $@; }; f"
+  theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
+
+[push]
+	default = simple
