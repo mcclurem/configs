@@ -79,10 +79,12 @@ if [ -f $HOME/.git-completion.bash ]; then
 fi
 
 # enable ssh completion
-function _ssh_completion() {
-  perl -ne 'print "$1 " if /^[Hh]ost (.+)$/' ~/.ssh/config
-}
-complete -W "$(_ssh_completion)" ssh
+if [ -f $HOME/.ssh/config ]; then
+  function _ssh_completion() {
+    perl -ne 'print "$1 " if /^[Hh]ost (.+)$/' ~/.ssh/config
+  }
+  complete -W "$(_ssh_completion)" ssh
+fi
 
 # enable tab complete for sudo
 complete -cf sudo
