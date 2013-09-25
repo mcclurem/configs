@@ -109,7 +109,8 @@ if [ -f ~/.bashrc ]; then
 fi
 
 case $HOSTNAME in
-    *ees-lin* )
+    *-lin*ecs* )
+        export CALYPSO_CONCEPT_LOG_ENABLE=1
         export TOOLSROOT="/tools"
         export VERSION_OSVER="v1.44"
         export CDSPROGS="$TOOLSROOT/vendor/cadencepe/cds_user_progs"
