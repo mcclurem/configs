@@ -52,6 +52,8 @@ fi
 
 PrependPath "$HOME/bin"
 PrependPath "$HOME/local/bin"
+PrependPath "/usr/local/bin"
+PrependPath "/usr/local/sbin"
 AppendPath "/sbin"
 AppendPath "/bin"
 AppendPath "/usr/sbin"
@@ -65,6 +67,8 @@ AppendPath "$HOME/local/src/ct/bin"
 AppendPath "$HOME/local/arm/bin"
 
 AppendPath "$HOME/altera/13.0/quartus/bin"
+
+AppendPath "/usr/NX/bin"
 
 #Mac specific path settings
 if [ `uname` == 'Darwin' ]; then
