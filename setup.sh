@@ -2,7 +2,7 @@
 
 
 CONFDIR="$HOME/configs"
-FILES=`ls -A $CONFDIR | grep -v "setup.sh" | grep -v -e "\.git\b" | grep -v "README" | grep -v "authorized_keys"`
+FILES=`ls -A $CONFDIR | grep -v "setup.sh" | grep -v -e "\.git\b" | grep -v "README"`
 echo $FILES;
 for FILE in $FILES
 do
