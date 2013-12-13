@@ -102,6 +102,7 @@ alias b='bundle exec'
 
 # common typos
 alias sudp='sudo'
+alias fucking='sudo'
 alias LS='ls'
 alias cd..='cd ..'
 
