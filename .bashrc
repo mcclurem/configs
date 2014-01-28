@@ -1,16 +1,14 @@
 # ~/.bashrc
 
+# user-specific environment and startup programs
+
 # test for an interactive shell
 if [[ $- != *i* ]]; then
-   return
+  return
 fi
 
 # source global definitions
-if [ -f /etc/bashrc ]; then
-  source /etc/bashrc
-fi
-
-# user-specific environment and startup programs
+[ -f /etc/bashrc ] && source /etc/bashrc
 
 # include root utils in PATH
 export PATH=$PATH:$HOME/bin:/sbin:/usr/sbin
@@ -62,29 +60,23 @@ shopt -s checkwinsize
 export EDITOR=`which vim`
 
 # source aliases
-if [ -f ~/.aliases ]; then
-  source ~/.aliases
-fi
+[ -f ~/.aliases ] && source ~/.aliases
 
 # source alias.sh aliases
-if [ -f ~/.aliases.sh ]; then
-  # curl https://alias.sh/user/296/alias >> ~/.aliases.sh
-  source ~/.aliases.sh
-  #source <(wget -q -O - "$@" https://alias.sh/user/296/alias)
-fi
+[ -f ~/.aliases.sh ] && source ~/.aliases.sh
+# curl https://alias.sh/user/296/alias >> ~/.aliases.sh
+#source <(wget -q -O - "$@" https://alias.sh/user/296/alias)
 
 # sensitive or host-specific data goes in here
-if [ -f ~/.bash_profile.private ]; then
-  source ~/.bash_profile.private
-fi
+[ -f ~/.bash_profile.private ] && source ~/.bash_profile.private
 
 # load git-prompt if available, else use .bash_prompt
 if [ -f ~/other_projects/git-prompt/git-prompt.sh ]; then
   # mkdir -p ~/other_projects
   # git clone https://github.com/dmerrick/git-prompt.git ~/other_projects/git-prompt
-  . ~/other_projects/git-prompt/git-prompt.sh
+  source ~/other_projects/git-prompt/git-prompt.sh
 elif [ -f ~/.bash_prompt ]; then
-  . ~/.bash_prompt
+  source ~/.bash_prompt
 else
   PS1='$PWD > '
 fi
@@ -97,10 +89,10 @@ fi
 
 # enable git completion
 #NOTE: does not currently work with g() shortcut
-[ -f $HOME/.git-completion.bash ] && source $HOME/.git-completion.bash
+[ -f ~/.git-completion.bash ] && source ~/.git-completion.bash
 
 # enable ssh completion
-if [ -f $HOME/.ssh/config ]; then
+if [ -f ~/.ssh/config ]; then
   function _ssh_completion() {
     perl -ne 'print "$1 " if /^[Hh]ost (.+)$/' ~/.ssh/config
   }
