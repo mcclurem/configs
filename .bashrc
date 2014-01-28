@@ -23,18 +23,6 @@ if [ "$(which keychain 2>/dev/null)" ]; then
   eval `keychain --ignore-missing -q --eval ~/.ssh/id_rsa ~/.ssh/id_dsa`
 fi
 
-#export CDPATH=.:$HOME/work
-
-#if [ "$DISPLAY" ]; then
-# if [ "$(which tpb 2>/dev/null)" ]; then
-#   tpb -d &
-# fi
-# #set defaluts for x crap
-# if [ `uname` != 'Darwin' ]; then
-#   xrdb -load ~/.Xresources
-# fi
-#fi
-
 # os x stuff here
 if [ `uname` == 'Darwin' ]; then
   # Adding an appropriate PATH variable for use with MacPorts.
@@ -134,3 +122,15 @@ export GREP_COLOR='1;32'
 # from pancake .bashrc
 # enables ^s and ^q in rTorrent, when running in screen
 stty -ixon -ixoff
+
+#export CDPATH=.:$HOME/work
+
+#if [ "$DISPLAY" ]; then
+# if [ "$(which tpb 2>/dev/null)" ]; then
+#   tpb -d &
+# fi
+# #set defaluts for x crap
+# if [ `uname` != 'Darwin' ]; then
+#   xrdb -load ~/.Xresources
+# fi
+#fi
