@@ -12,7 +12,6 @@ export PATH=$PATH:$HOME/bin:/sbin:/usr/sbin
 
 # RVM settings
 [[ -s ~/.rvm/scripts/rvm ]] && source ~/.rvm/scripts/rvm
-#export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH
 
 # if we have keychain then we rock
 if [ "$(which keychain 2>/dev/null)" ]; then
