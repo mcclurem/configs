@@ -3,6 +3,8 @@
 # smart history for scrolling up and down
 "\e[A":history-search-backward
 "\e[B":history-search-forward
+#"\e[D":emacs-backward-word
+#"\e[C":emacs-forward-word
 
 # macro examle:
 # alt-w will add "# macro" to end of line
