@@ -60,23 +60,14 @@ else
 fi
 
 # source bash completion
-if [ -f /etc/bash_completion ]; then
-  source /etc/bash_completion
-fi
-
-if [ -f /opt/local/etc/bash_completion ]; then
-  source /opt/local/etc/bash_completion
-fi
-
-if [ -f /etc/profile.d/bash-completion.sh ]; then
-  source /etc/profile.d/bash-completion.sh
-fi
+[ -f /etc/bash_completion ] && source /etc/bash_completion
+[ -f /opt/local/etc/bash_completion ] && source /opt/local/etc/bash_completion
+[ -f /etc/profile.d/bash-completion.sh ] && source /etc/profile.d/bash-completion.sh
+[ -f `brew --prefix`/etc/bash_completion ] && source `brew --prefix`/etc/bash_completion
 
 # enable git completion
 #NOTE: does not currently work with g() shortcut
-if [ -f $HOME/.git-completion.bash ]; then
-  source $HOME/.git-completion.bash
-fi
+[ -f $HOME/.git-completion.bash ] && source $HOME/.git-completion.bash
 
 # enable ssh completion
 if [ -f $HOME/.ssh/config ]; then
