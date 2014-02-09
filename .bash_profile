@@ -2,7 +2,7 @@
 
 PrependPath(){
     if [ $# == 1 ];then
-        if [[ `echo $PATH|grep $1` ]]; then
+        if [[ `echo $PATH|grep $1:` ]]; then
             export PATH=`echo $PATH|sed -e "s|:$1||"`
         fi
         if [ -d $1 ] || [ -f $1 ]; then
@@ -20,7 +20,7 @@ PrependPath(){
 
 AppendPath(){
     if [ $# == 1 ];then
-        [[ `echo "$PATH"|grep $1` ]] && return
+        [[ `echo "$PATH"|grep :$1` ]] && return
         if [ -d $1 ] || [ -f $1 ]; then
             export PATH="$PATH:$1"
         fi
