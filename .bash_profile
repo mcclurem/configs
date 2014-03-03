@@ -112,6 +112,9 @@ if [ -f ~/.bashrc ]; then
 	. ~/.bashrc
 fi
 
+export P4PORT="smtp4.ecs.apple.com:1661"
+export P4USER="mmcclure"
+
 case $HOSTNAME in
     *-lin*ecs* )
         export CALYPSO_CONCEPT_LOG_ENABLE=1
