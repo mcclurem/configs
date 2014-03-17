@@ -85,7 +85,9 @@ fi
 [ -f /etc/bash_completion ] && source /etc/bash_completion
 [ -f /opt/local/etc/bash_completion ] && source /opt/local/etc/bash_completion
 [ -f /etc/profile.d/bash-completion.sh ] && source /etc/profile.d/bash-completion.sh
-[ -f `brew --prefix`/etc/bash_completion ] && source `brew --prefix`/etc/bash_completion
+if we_have brew
+  then [ -f `brew --prefix`/etc/bash_completion ] && source `brew --prefix`/etc/bash_completion
+fi
 
 # enable git completion
 #NOTE: does not currently work with g() shortcut
