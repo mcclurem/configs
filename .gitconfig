@@ -41,6 +41,9 @@
   ro = rebase origin/master
   r = rebase
 
+  # https://github.com/tiimgreen/github-cheat-sheet#checking-out-pull-requests
+  fpr = fetch origin '+refs/pull/*/head:refs/remotes/origin/pr/*'
+
   # http://blog.apiaxle.com/post/handy-git-tips-to-stop-you-getting-fired/
   assume   = update-index --assume-unchanged
   unassume = update-index --no-assume-unchanged
