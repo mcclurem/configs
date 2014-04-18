@@ -128,3 +128,5 @@ stty -ixon -ixoff
 #   xrdb -load ~/.Xresources
 # fi
 #fi
+
+export PATH=/usr/texbin:"$PATH"
