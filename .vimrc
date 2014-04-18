@@ -16,6 +16,7 @@ augroup filetype
     au! BufRead,BufNewFile *.c,*.h,*.cpp    set foldmethod=syntax
     au! BufRead,BufNewFile *.py             set foldmethod=indent
 augroup END
+
 syntax on
 filetype plugin on
 filetype indent on
@@ -42,6 +43,9 @@ endfunction
 
 call SetICSCode()
 
+" map spacebar as the leader key
+let mapleader = "\<Space>"
+
 nmap <silent> <C-n> <Esc>:call ToggleHLSearch()<CR>.
 let Tlist_Ctags_Cmd = "/opt/local/bin/ctags"
 let Tlist_WinWidth = 50
@@ -51,6 +55,14 @@ map <Leader>0 :w\|verbose !ngspice -b %<CR>
 
 map <Leader>9 :cn<cr>
 map <Leader>8 :cp<cr>
+
+" disable that stupid window
+map q: :q
+
+" automatically jump to end of text you pasted
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
 
 "CTRL-N for nerdtree
 map <C-n> :NERDTreeToggle<CR>
