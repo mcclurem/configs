@@ -153,6 +153,8 @@ alias nocom='grep "^[^#]"'
 
 # what's my IP?
 alias myip="ifconfig eth0 | awk '/inet / { print $2 }' | sed 's/addr://'"
+# what's my external IP?
+#curl ipinfo.io
 
 # number of seconds since the Epoch
 alias epoch="date +%s"
