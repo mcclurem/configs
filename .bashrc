@@ -117,18 +117,8 @@ export GREP_COLOR='1;32'
 # enables ^s and ^q in rTorrent, when running in screen
 stty -ixon -ixoff
 
-#export CDPATH=.:$HOME/work
-
-#if [ "$DISPLAY" ]; then
-# if [ "$(which tpb 2>/dev/null)" ]; then
-#   tpb -d &
-# fi
-# #set defaluts for x crap
-# if [ `uname` != 'Darwin' ]; then
-#   xrdb -load ~/.Xresources
-# fi
-#fi
-
 export PATH=/usr/texbin:"$PATH"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
