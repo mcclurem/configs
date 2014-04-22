@@ -130,3 +130,5 @@ stty -ixon -ixoff
 #fi
 
 export PATH=/usr/texbin:"$PATH"
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
