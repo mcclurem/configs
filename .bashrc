@@ -86,7 +86,7 @@ fi
 [ -f /opt/local/etc/bash_completion ] && source /opt/local/etc/bash_completion
 [ -f /etc/profile.d/bash-completion.sh ] && source /etc/profile.d/bash-completion.sh
 if we_have brew
-  then [ -f `brew --prefix`/etc/bash_completion ] && source `brew --prefix`/etc/bash_completion
+  then [ -f `brew --prefix`/share/bash-completion/bash_completion ] && source `brew --prefix`/share/bash-completion/bash_completion
 fi
 
 # enable git completion
