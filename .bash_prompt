@@ -23,7 +23,38 @@ BCYAN="\[\e[1;36m\]"
 BWHITE="\[\e[1;37m\]"
 #Return everything to default
 CLEAR="\[\e[0m\]"
-
+if tput setaf 1 &> /dev/null; then
+    tput sgr0
+    if [[ $(tput colors) -ge 256 ]] 2>/dev/null; then
+      MAGENTA=$(tput setaf 201)
+      ORANGE=$(tput setaf 172)
+      YELLOW=$(tput setaf 226)
+      GREEN=$(tput setaf 40)
+      PURPLE=$(tput setaf 129)
+      WHITE=$(tput setaf 246)
+      RED=$(tput setaf 196)
+      BLUE=$(tput setaf 21)
+    else
+      MAGENTA=$(tput setaf 5)
+      ORANGE=$(tput setaf 4)
+      YELLOW=$(tput setaf 3)
+      GREEN=$(tput setaf 2)
+      PURPLE=$(tput setaf 1)
+      WHITE=$(tput setaf 7)
+      RED=$(tput setaf 1)
+    fi
+    BOLD=$(tput bold)
+    RESET=$(tput sgr0)
+else
+    MAGENTA="\033[1;31m"
+    ORANGE="\033[1;33m"
+    GREEN="\033[1;32m"
+    PURPLE="\033[1;35m"
+    WHITE="\033[1;37m"
+    RED="\033[1;31m"
+    BOLD=""
+    RESET="\033[m"
+fi
 
 function setprompt(){
 
@@ -41,25 +72,32 @@ case $HOSTNAME in
 	greased-up-deaf-guy )
 	HOSTC=$CYAN
 	;;
-	chickensuit )
-	HOSTC=$YELLOW
-	;;
-	lukecage )
-	HOSTC=$CYAN
-	;;
-	elektra )
+	Chriscross.local )
 	HOSTC=$BLUE
 	;;
+	Herbert.local )
+	HOSTC=$YELLOW
+	;;
 	*)
-	HOSTC=$WHITE
+	HOSTC=$ORANGE
 	;;
 esac
-
-
-if [ $VERB == 1 ]; then
-	PS1="${TIMEC}\@ ${USERC}\u@${HOSTC}\h ${PATHC}$PWD >${CLEAR} "
-else
-	PS1="${TIMEC}\@ ${USERC}\u@${HOSTC}\h ${PATHC}\W >${CLEAR} "
-fi
+PS1="\[${TIMEC}\]\@ \[${BOLD}${MAGENTA}\]\u\[$WHITE\]@\[$HOSTC\]\h\[$WHITE\]:\[$GREEN\]\w\[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)\[$WHITE\]\$ \[$RESET\]"
+#if [ $VERB == 1 ]; then
+#	PS1="${TIMEC}\@ ${USERC}\u@${HOSTC}\h ${PATHC}$PWD >${CLEAR} "
+#else
+#	PS1="${TIMEC}\@ ${USERC}\u@${HOSTC}\h ${PATHC}\W >${CLEAR} "
+#fi
 }
+
+function parse_git_dirty() {
+    [[ $(git status 2> /dev/null | tail -n1) != *"working directory clean"* ]] && echo "*"
+}
+
+function parse_git_branch() {
+    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
+}
+
 export PROMPT_COMMAND=setprompt
+#export PS1="\[${TIMEC}\]\@ \[${BOLD}${MAGENTA}\]\u\[$WHITE\]@\[$ORANGE\]\h\[$WHITE\]:\[$GREEN\]\w\[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)\[$WHITE\]\$ \[$RESET\]"
+

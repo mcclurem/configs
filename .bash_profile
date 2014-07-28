@@ -141,3 +141,4 @@ case $HOSTNAME in
         ;;
 esac
 
+export HOMEBREW_GITHUB_API_TOKEN="46ad2082005bc9e080f9f6ad2df2e0187cce7882"

@@ -43,7 +43,7 @@ endfunction
 
 call SetICSCode()
 
-nmap <silent> <C-n> <Esc>:call ToggleHLSearch()<CR>.
+nmap <silent> <C-h> <Esc>:call ToggleHLSearch()<CR>.
 let Tlist_Ctags_Cmd = "/opt/local/bin/ctags"
 let Tlist_WinWidth = 50
 map <Leader>1 :TlistToggle<cr>
@@ -52,3 +52,14 @@ map <Leader>0 :w\|verbose !ngspice -b %<CR>
 
 map <Leader>9 :cn<cr>
 map <Leader>8 :cp<cr>
+
+"CTRL-N for nerdtree
+map <C-n> :NERDTreeToggle<CR>
+" close vim if nerdtree is only window
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" auto-open nerdtree
+"autocmd vimenter * NERDTree
+
+" open a NERDTree automatically when vim starts up if no files were specified
+autocmd vimenter * if !argc() | NERDTree | endif
