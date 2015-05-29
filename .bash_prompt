@@ -68,20 +68,25 @@ if [ $? == 0 ]; then
 	PATHC="$RED"
 fi
 
-case $HOSTNAME in
-	greased-up-deaf-guy )
-	HOSTC=$CYAN
-	;;
-	Chriscross.local )
-	HOSTC=$BLUE
-	;;
-	Herbert.local )
-	HOSTC=$YELLOW
-	;;
-	*)
-	HOSTC=$ORANGE
-	;;
-esac
+if [ -z ${HOST_COLOR_OVERRIDE+x} ]; then
+    #No override was set (see .bash_color_settings)
+    case $HOSTNAME in
+	    greased-up-deaf-guy )
+    	HOSTC=$CYAN
+    	;;
+    	Chriscross.local )
+    	HOSTC=$BLUE
+    	;;
+    	Herbert.local )
+    	HOSTC=$YELLOW
+    	;;
+    	*)
+    	HOSTC=$ORANGE
+    	;;
+    esac
+else
+    HOSTC=$HOST_COLOR_OVERRIDE
+fi
 PS1="\[${TIMEC}\]\@ \[${BOLD}${MAGENTA}\]\u\[$WHITE\]@\[$HOSTC\]\h\[$WHITE\]:\[$GREEN\]\w\[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)\[$WHITE\]\$ \[$RESET\]"
 #if [ $VERB == 1 ]; then
 #	PS1="${TIMEC}\@ ${USERC}\u@${HOSTC}\h ${PATHC}$PWD >${CLEAR} "

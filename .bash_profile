@@ -141,4 +141,11 @@ case $HOSTNAME in
         ;;
 esac
 
-export HOMEBREW_GITHUB_API_TOKEN="46ad2082005bc9e080f9f6ad2df2e0187cce7882"
+if [ -f ~/.bash_color_settings ]; then
+    source ~/.bash_color_settings
+fi
+
+if [ -f ~/.bash_profile_local ]; then
+    source ~/.bash_profile_local
+fi
+
