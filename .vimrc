@@ -11,6 +11,11 @@ augroup filetype
     au! BufRead,BufNewFile *.jobdesc        set filetype=php
     au! BufRead,BufNewFile *.tex            set filetype=tex
     au! BufRead,BufNewFile *.verilog,*.v    set filetype=verilog
+    au! BufRead,BufNewFile *.uia            set filetype=javascript
+augroup END
+
+augroup fold
+    au! BufRead,BufNewFile *.uia            set foldmethod=indent
     au! BufRead,BufNewFile *.verilog,*.v    set foldmethod=indent
     au! BufRead,BufNewFile *.c,*.h,*.cpp    set foldmethod=syntax
     au! BufRead,BufNewFile *.py             set foldmethod=indent
