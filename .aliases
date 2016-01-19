@@ -6,12 +6,12 @@ alias mv='mv -i'
 alias verb='export VERB=1'
 alias noverb='export VERB=0'
 alias cd..='cd ..'
-if [ `uname` != 'Darwin' ] || [ `echo $PATH | grep 'gnubin' ` ]
-then
-	alias ls='ls --color=always -I "*.pyc"'
-else
-	alias ls='ls -G'
-fi
+#if [ `uname` != 'Darwin' ] || [ `echo $PATH | grep 'gnubin' ` ]
+#then
+#	alias ls='ls --color=always -I "*.pyc"'
+#else
+#	alias ls='ls -G'
+#fi
 alias lsa='ls -Ah'
 alias lsl='ls -lh'
 alias lsal='ls -lAh'
@@ -40,3 +40,8 @@ g() {
    git "$@"
  fi
 }
+
+alias updatetoc='schutil UpdatePageBorder -UpdateTOC'
+alias killcadence='ps aux|grep mmc|grep [c]adence|awk "{ print \$2 }" | xargs kill'
+
+
