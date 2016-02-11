@@ -9,7 +9,7 @@ PrependPath(){
            export PATH="$1:$PATH"
         fi
     else
-        [[ $(echo "${!1}"|grep "$2") ]] && return
+        [[ $(echo "${!1}"|grep "$2:") ]] && return
         if [ -d $2 ] || [ -f $2 ]; then
             if [ "${!1}" != "" ]; then
                 export "$1"="$2:${!1}"
@@ -25,7 +25,7 @@ AppendPath(){
             export PATH="$PATH:$1"
         fi
     else 
-        [[ $(echo "${!1}"|grep "$2") ]] && return
+        [[ $(echo "${!1}"|grep ":$2") ]] && return
         if [ -d $2 ] || [ -f $2 ]; then
             if [ "${!1}" != "" ]; then
                 export "$1"="${!1}:$2"
@@ -107,16 +107,25 @@ if [ `uname` == 'Darwin' ]; then
     PrependPath "/Applications/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin"
 fi
 
+NSCRIPTPYROOT="$HOME/nscript/Python2.7"
+#PrependPath PYTHONPATH "$NSCRIPTPYROOT/lib/python2.7/site-packages"
+#PrependPath PYTHONPATH "$NSCRIPTPYROOT/lib/python2.7"
+
+#PrependPath LD_LIBRARY_PATH "$NSCRIPTPYROOT/lib/extra_libs"
+#PrependPath LD_LIBRARY_PATH "$NSCRIPTPYROOT/lib/python2.7/site-packages/nimbic"
+#PrependPath LD_LIBRARY_PATH "$NSCRIPTPYROOT/lib"
+#PrependPath LD_LIBRARY_PATH "$HOME/nscript/lib"
+
 # Get the aliases and functions
 if [ -f ~/.bashrc ]; then
 	. ~/.bashrc
 fi
 
-export P4PORT="smtp4.ecs.apple.com:1661"
+export P4PORT="ssl:smtp4.ecs.apple.com:1661"
 export P4USER="mmcclure"
 
 case $HOSTNAME in
-    *-lin*ecs* )
+    *ecs* )
         export CALYPSO_CONCEPT_LOG_ENABLE=1
         export TOOLSROOT="/tools"
         export VERSION_OSVER="v1.44"
@@ -132,10 +141,10 @@ case $HOSTNAME in
         export ADS="$TOOLSROOT/vendor/ads"
         export PATH="/tools/freeware/bin:/tools/local/bin:/tools/local/scripts/bin:/tools/vendor/bin:/usr/X11R6/bin:/tools/local/exe:/tools/vendor/exe:/tools/vendor/cadencepe/cds_user_progs:/usr/ucb:$PATH"
         export VENDORTOOLSROOT="$TOOLSROOT/vendor"
-        export P4PORT="smtp4.apple.com:1661"
         export PATHTO_PERL="/tools/freeware/perl/perl-5.12.1/build/Linux_2.6EL_x86_64/bin/perl"
         export VERSION_PERL="perl-5.12.1"
-        export P4PORT="smtp4:1661"
+        export P4PORT="ssl:smtp4.ecs.apple.com:1661"
+        export P4TRUST="/org/ees/tools/local/etc/p4trust"
         # RT #35097
         export CDS_LIB="$TOOLSROOT/local/`whichver CDS_LIB_VER`"
         ;;
