@@ -21,6 +21,9 @@ g() {
  fi
 }
 
+# http://stackoverflow.com/a/27614878/1070080
+function ssh () { /usr/bin/ssh -t $@ "tmux attach || tmux new || echo 'no tmux'"; }
+
 # os x only
 if [ `uname` == 'Darwin' ];
 then
@@ -174,6 +177,8 @@ subl-ssh() {
 
 alias s.="subl ."
 
+alias tmosh='() {mosh $* -- sh -c "tmux a || tmux"}'
+
 alias speedtest="wget -O /dev/null http://cachefly.cachefly.net/100mb.test"
 
 # create a directory shortcut
@@ -202,3 +207,8 @@ alias speedtest="wget -O /dev/null http://cachefly.cachefly.net/100mb.test"
 
 # gentoo only
 #alias eix-sync='sudo eix-sync'
+
+# weather!
+# curl wttr.in/94117
+# curl wttr.in/Moon
+#
