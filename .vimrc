@@ -95,3 +95,24 @@ highlight SpellBad     ctermbg=0   ctermfg=1
 "FIXME: doesn't work
 "nnoremap <C-S-a> <C-x>
 
+" the following are for Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" the following is fore vim-expand-region
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
+
+" for powerline
+set laststatus=2 " Always display the statusline in all windows
+set showtabline=2 " Always display the tabline, even if there is only one tab
+set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+
+" to debug youcompleteme
+let g:ycm_server_keep_logfiles = 1
+let g:ycm_server_log_level = 'debug'
