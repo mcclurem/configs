@@ -44,6 +44,7 @@ export HISTIGNORE=clear:ls
 export HISTSIZE=1000000
 export HISTFILESIZE=1000000
 export HISTTIMEFORMAT="%F %T " # show times next to history items
+#HISTFILE="${HOME}/.history/$(date -u +%Y/%m/%d.%H.%M.%S)_${HOSTNAME_SHORT}_$$"
 shopt -s histappend
 
 # fix spelling errors
