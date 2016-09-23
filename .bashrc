@@ -110,6 +110,9 @@ if [ `uname` != 'Darwin' ]; then
   echo -e "$(uname -a)"> ~/.plan
 fi
 
+# auto-expand history
+bind Space:magic-space
+
 # grep color options
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
