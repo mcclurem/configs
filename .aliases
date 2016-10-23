@@ -27,8 +27,8 @@ then
   alias ls='ls -G'
 
   # tried-and-true rsync options
-  RSYNC_CMD="rsync -v -madPhi --no-p --no-t --append-verify"
-  DATA_DIR="/Volumes/Data"
+  RSYNC_CMD="/usr/local/bin/rsync -v -madPhi --no-p --no-t --append-verify"
+  DATA_DIR="/Volumes/Leeroy"
   NODATAMSG="External drive not found. Stopping."
 
   # instead of exludes files, we could use something like this:
