@@ -134,6 +134,8 @@ alias ....="cd ../../.. && ls"
 alias .....="cd ../../../.. && ls"
 alias ......="cd ../../../../.. && ls"
 
+alias grep='grep --color=auto'
+
 # beep!
 alias beep='echo -en "\033[10;1729]\a"'
 
