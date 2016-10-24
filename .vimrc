@@ -1,16 +1,38 @@
 " note: a lot of defaults come from sensible.vim
 " it's good, install it!
 
-" to install pathogen:
-" mkdir -p ~/.vim/autoload ~/.vim/bundle && \
-" curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-execute pathogen#infect()
+" to install Vundle:
+" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+set nocompatible " be iMproved, required by Vundle
+filetype off     " required by Vundle
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'chriskempson/base16-vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree-git-plugin'
+Plugin 'scrooloose/syntastic'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'tpope/vim-commentary'
+Plugin 'terryma/vim-expand-region'
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-rsi'
+Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-sleuth'
+Plugin 'tpope/vim-surround'
+Plugin 'vim-ruby/vim-ruby'
+call vundle#end()
+filetype plugin indent on " required by Vundle
 
 " map spacebar as the leader key
 let mapleader = "\<Space>"
 
 " use :help 'option' to see the documentation for the given option
-
 set ruler
 set number
 set backspace=2
