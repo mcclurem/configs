@@ -95,6 +95,9 @@ then
 
 else
   alias ls='ls --color=always'
+
+  alias pbcopy='xsel --clipboard --input'
+  alias pbpaste='xsel --clipboard --output'
 fi
 
 # host shortcuts
