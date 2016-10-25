@@ -30,7 +30,7 @@ then
   alias ls='ls -G'
 
   # tried-and-true rsync options
-  RSYNC_CMD="/usr/local/bin/rsync -v -madPhi --no-p --no-t --append-verify"
+  RSYNC_CMD="$(which rsync) -v -madPhi --no-p --no-t --append-verify"
   DATA_DIR="/Volumes/Leeroy"
   NODATAMSG="External drive not found. Stopping."
 
