@@ -3,6 +3,7 @@
 
 " to install Vundle:
 " git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" then open vim and run :PluginInstall
 
 set nocompatible " be iMproved, required by Vundle
 filetype off     " required by Vundle
