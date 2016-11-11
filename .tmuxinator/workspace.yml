@@ -34,7 +34,7 @@ windows:
       layout: fa9d,191x90,0,0[191x15,0,0{95x15,0,0,0,95x15,96,0,2},191x74,0,16,3]
       panes:
         # update every 24 hours
-        - watch -t -c -n 86400 "gcalcli --calendar 'Engineering' --calendar 'dana.merrick@grandrounds.com' agenda"
+        - watch -t -c -n 86400 "gcalcli --calendar 'Engineering' --calendar 'dana@snapdocs.com' agenda"
         - tmux clock-mode -t %4
         - clear
   # other examples:
