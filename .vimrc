@@ -27,6 +27,7 @@ Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-ruby/vim-ruby'
+Plugin 'godlygeek/tabular'
 call vundle#end()
 filetype plugin indent on " required by Vundle
 
