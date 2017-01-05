@@ -66,6 +66,13 @@ then
     pancake:files/Audiobooks files/
   }
 
+  sync_books() {
+    [ ! -d $DATA_DIR ] && echo $NODATAMSG && return 1
+    cd $DATA_DIR && \
+    $RSYNC_CMD $@ \
+    pancake:files/Books files/
+  }
+
   sync_other() {
     [ ! -d $DATA_DIR ] && echo $NODATAMSG && return 1
     cd $DATA_DIR && \
