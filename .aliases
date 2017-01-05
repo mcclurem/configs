@@ -238,4 +238,6 @@ man() {
 # weather!
 # curl wttr.in/94117
 # curl wttr.in/Moon
-#
+
+# cli pastebin
+#echo Hello world. | curl -F 'f:1=<-' ix.io
