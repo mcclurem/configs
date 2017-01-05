@@ -18,11 +18,11 @@ export PATH=$PATH:$HOME/bin:/sbin:/usr/sbin
 
 # if we have keychain then we rock
 if [ "$(which keychain 2>/dev/null)" ]; then
-  eval `keychain --ignore-missing -q --eval ~/.ssh/id_rsa ~/.ssh/id_dsa`
+  eval $(keychain --ignore-missing -q --eval ~/.ssh/id_rsa ~/.ssh/id_dsa ~/.ssh/id_ecdsa)
 fi
 
 # os x stuff here
-if [ `uname` == 'Darwin' ]; then
+if [ $(uname) == 'Darwin' ]; then
   # Adding an appropriate PATH variable for use with MacPorts.
   export PATH=/opt/local/bin:/opt/local/sbin:$PATH
   # Adding an appropriate PATH variable for use with Homebrew.
@@ -86,8 +86,10 @@ fi
 [ -f /etc/bash_completion ] && source /etc/bash_completion
 [ -f /opt/local/etc/bash_completion ] && source /opt/local/etc/bash_completion
 [ -f /etc/profile.d/bash-completion.sh ] && source /etc/profile.d/bash-completion.sh
-if we_have brew
-  then [ -f `brew --prefix`/share/bash-completion/bash_completion ] && source `brew --prefix`/share/bash-completion/bash_completion
+if we_have brew; then
+  # this is the old style
+  [ -f $(brew --prefix)/share/bash-completion/bash_completion ] && source $(brew --prefix)/share/bash-completion/bash_completion
+  [ -f $(brew --prefix)/etc/bash_completion ] && source $(brew --prefix)/etc/bash_completion
 fi
 
 # enable git completion
@@ -106,7 +108,7 @@ fi
 complete -cf sudo
 
 # set up simple .plan (for finger utility)
-if [ `uname` != 'Darwin' ]; then
+if [ $(uname) != 'Darwin' ]; then
   echo -e "$(uname -a)"> ~/.plan
 fi
 
