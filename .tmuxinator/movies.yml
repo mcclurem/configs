@@ -1,0 +1,28 @@
+# ~/.tmuxinator/movies.yml
+
+name: movies
+root: /Volumes/Leeroy
+
+# Optional tmux socket
+# socket_name: movies
+
+# Runs before everything. Use it to start daemons etc.
+# pre: sudo /etc/rc.d/mysqld start
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+windows:
+  - primary:
+    - clear; neofetch
+  - secondary:
+    - clear; neofetch
+  - rclone:
+    - clear; cd /Volumes/Leeroy && ./rclone.sh
+  # other examples:
+  #- server: bundle exec rails s
+  #- logs: tail -f log/development.log
+
