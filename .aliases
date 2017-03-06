@@ -98,6 +98,8 @@ then
     sync_music -n --no-verbose
     echo -e "*** Checking Other..."
     sync_other -n --no-verbose
+    sync_books -n --no-verbose
+    sync_audiobooks -n --no-verbose
   }
 
 else
