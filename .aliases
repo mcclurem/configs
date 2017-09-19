@@ -22,7 +22,8 @@ g() {
 }
 
 # http://stackoverflow.com/a/27614878/1070080
-function ssh () { /usr/bin/ssh -t $@ "tmux attach || tmux new || echo 'no tmux'"; }
+#function ssh () { /usr/bin/ssh -t $@ "tmux attach || tmux new || echo 'no tmux'"; }
+#function ssh () { autossh -t $@ "tmux -CC -A" }
 
 # os x only
 if [ `uname` == 'Darwin' ];
@@ -149,8 +150,14 @@ alias grep='grep --color=auto'
 alias beep='echo -en "\033[10;1729]\a"'
 
 # clear screen
-alias clr="clear"
-alias cls="clear"
+# display system info if we have the right tools
+if we_have neofetch; then
+  alias clr="clear && neofetch"
+  alias cls="clear && neofetch"
+else
+  alias clr="clear"
+  alias cls="clear"
+fi
 
 # df and du -> human readable
 alias df="df -h"
@@ -192,6 +199,8 @@ subl-ssh() {
 alias s.="subl ."
 
 alias tmosh='() {mosh $* -- sh -c "tmux a || tmux"}'
+
+alias bastion='mosh --ssh="ssh -p2222" bastion -- tmux a || tmux'
 
 alias speedtest="wget -O /dev/null http://cachefly.cachefly.net/100mb.test"
 
@@ -243,3 +252,7 @@ man() {
 
 # cli pastebin
 #echo Hello world. | curl -F 'f:1=<-' ix.io
+
+# man hier
+
+# yes "$(seq 231 -1 16)" | while read i; do printf "\x1b[48;5;${i}mHi $USER\n"; sleep .02; done

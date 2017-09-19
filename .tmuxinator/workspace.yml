@@ -24,7 +24,8 @@ windows:
       panes:
         - pane_with_multiple_commands:
           - clear
-          - fortune | cowsay | lolcat
+          - watch -t -c -n 86400 "van_remaining.rb"
+          #- fortune | cowsay | lolcat
         - tmux clock-mode -t %2
         - tmux select-pane -t %3; clear; neofetch
   - secondary:
