@@ -45,6 +45,12 @@ then
     $RSYNC_CMD --exclude-from=.exclude_all_but_video $@ \
     pancake:files/"TV\ Shows" files/
   }
+  sync_tv_b() {
+    [ ! -d $DATA_DIR ] && echo $NODATAMSG && return 1
+    cd $DATA_DIR && \
+    $RSYNC_CMD --exclude-from=.exclude_all_but_video $@ \
+    pancake:files/"TV\ Shows\ B" files/
+  }
 
   sync_movies() {
     [ ! -d $DATA_DIR ] && echo $NODATAMSG && return 1
