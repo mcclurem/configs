@@ -20,8 +20,6 @@ windows:
     - clear; neofetch
   - secondary:
     - clear; neofetch
-  - rclone:
-    - clear; cd /Volumes/Leeroy && ./rclone.sh
   # other examples:
   #- server: bundle exec rails s
   #- logs: tail -f log/development.log
