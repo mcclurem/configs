@@ -26,8 +26,8 @@ windows:
           - clear
           - watch -t -c -n 86400 "van_remaining.rb"
           #- fortune | cowsay | lolcat
-        - tmux clock-mode -t %2
-        - tmux select-pane -t %3; clear; neofetch
+        - tmux clock-mode -t %3
+        - tmux select-pane -t %4; clear; neofetch
   - secondary:
       # ignore the first few CTRL-Ds (to prevent accidental closing)
       pre: export IGNOREEOF=3
@@ -36,7 +36,7 @@ windows:
       panes:
         # update every 24 hours
         - watch -t -c -n 86400 "gcalcli --calendar 'Engineering' --calendar 'dana@snapdocs.com' agenda"
-        - tmux clock-mode -t %4
+        - tmux clock-mode -t %5
         - clear; neofetch
   # other examples:
   #- server: bundle exec rails s
