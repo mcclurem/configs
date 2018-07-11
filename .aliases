@@ -32,7 +32,7 @@ then
 
   # tried-and-true rsync options
   RSYNC_CMD="$(which rsync) -v -madPhi --no-p --no-t --append-verify"
-  DATA_DIR="/Volumes/Leeroy"
+  DATA_DIR="/Volumes/blackbox"
   NODATAMSG="External drive not found. Stopping."
 
   # instead of exludes files, we could use something like this:
@@ -43,7 +43,7 @@ then
     [ ! -d $DATA_DIR ] && echo $NODATAMSG && return 1
     cd $DATA_DIR && \
     $RSYNC_CMD --exclude-from=.exclude_all_but_video $@ \
-    pancake:files/"TV\ Shows" files/
+    seedbox:files/"TV\ Shows" files/
   }
   sync_tv_b() {
     [ ! -d $DATA_DIR ] && echo $NODATAMSG && return 1
@@ -56,35 +56,35 @@ then
     [ ! -d $DATA_DIR ] && echo $NODATAMSG && return 1
     cd $DATA_DIR && \
     $RSYNC_CMD --exclude-from=.exclude_all_but_video $@ \
-    pancake:files/Movies files/
+    seedbox:files/Movies files/
   }
 
   sync_music() {
     [ ! -d $DATA_DIR ] && echo $NODATAMSG && return 1
     cd $DATA_DIR && \
     $RSYNC_CMD --exclude-from=.exclude_all_but_audio $@ \
-    pancake:files/Music files/
+    seedbox:files/Music files/
   }
 
   sync_audiobooks() {
     [ ! -d $DATA_DIR ] && echo $NODATAMSG && return 1
     cd $DATA_DIR && \
     $RSYNC_CMD $@ \
-    pancake:files/Audiobooks files/
+    seedbox:files/Audiobooks files/
   }
 
   sync_books() {
     [ ! -d $DATA_DIR ] && echo $NODATAMSG && return 1
     cd $DATA_DIR && \
     $RSYNC_CMD $@ \
-    pancake:files/Books files/
+    seedbox:files/Books files/
   }
 
   sync_other() {
     [ ! -d $DATA_DIR ] && echo $NODATAMSG && return 1
     cd $DATA_DIR && \
     $RSYNC_CMD $@ \
-    pancake:files/Other files/
+    seedbox:files/Other files/
   }
 
   # be careful with this
@@ -92,7 +92,7 @@ then
     [ ! -d $DATA_DIR ] && echo $NODATAMSG && return 1
     cd $DATA_DIR && \
     $RSYNC_CMD --dry-run $@ \
-    pancake:files .
+    seedbox:files .
   }
 
   check_all() {
@@ -116,10 +116,7 @@ else
   alias pbpaste='xsel --clipboard --output'
 fi
 
-# host shortcuts
-alias pancake='ssh pancake'
-alias bacon='ssh bacon'
-
+# ruby users get it
 alias b='bundle exec'
 
 # common typos
