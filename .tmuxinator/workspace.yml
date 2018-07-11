@@ -24,7 +24,7 @@ windows:
       panes:
         - pane_with_multiple_commands:
           - clear
-          - watch -t -c -n 86400 "van_remaining.rb"
+          - cd ~/other_projects/danalol && bundle exec middleman server
           #- fortune | cowsay | lolcat
         - tmux clock-mode -t %3
         - tmux select-pane -t %4; clear; neofetch
@@ -35,6 +35,7 @@ windows:
       layout: fa9d,191x90,0,0[191x15,0,0{95x15,0,0,0,95x15,96,0,2},191x74,0,16,3]
       panes:
         # update every 24 hours
+        # to install: pip install gcalcli
         - watch -t -c -n 86400 "gcalcli --calendar 'Engineering' --calendar 'dana@snapdocs.com' agenda"
         - tmux clock-mode -t %5
         - clear; neofetch
