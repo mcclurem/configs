@@ -31,8 +31,9 @@ then
   alias ls='ls -G'
 
   # tried-and-true rsync options
-  RSYNC_CMD="$(which rsync) -v -madPhi --no-p --no-t --append-verify"
-  DATA_DIR="/Volumes/blackbox"
+  RSYNC_CMD="/usr/local/bin/rsync -v -madPhi --no-p --no-t --append-verify"
+  #RSYNC_CMD="$(which rsync) -v -madPhi --no-p --no-t --append-verify"
+  DATA_DIR="/Volumes/Leeroy"
   NODATAMSG="External drive not found. Stopping."
 
   # instead of exludes files, we could use something like this:
@@ -85,6 +86,12 @@ then
     cd $DATA_DIR && \
     $RSYNC_CMD $@ \
     seedbox:files/Other files/
+  }
+
+  sync_youtube() {
+    [ ! -d $DATA_DIR ] && echo $NODATAMSG && return 1
+    cd $DATA_DIR/YouTube && \
+    ./download.sh
   }
 
   # be careful with this
