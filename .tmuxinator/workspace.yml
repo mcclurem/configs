@@ -26,7 +26,7 @@ windows:
           - clear
           - cd ~/other_projects/danalol && bundle exec middleman server
           #- fortune | cowsay | lolcat
-        - tmux clock-mode -t %3
+        - tmux clock-mode -t 2
         - tmux select-pane -t %4; clear; neofetch
   - secondary:
       # ignore the first few CTRL-Ds (to prevent accidental closing)
@@ -36,8 +36,8 @@ windows:
       panes:
         # update every 24 hours
         # to install: pip install gcalcli
-        - watch -t -c -n 86400 "gcalcli --calendar 'Engineering' --calendar 'dana@snapdocs.com' agenda"
-        - tmux clock-mode -t %5
+        - watch -t -c -n 86400 "gcalcli --calendar 'Migrations and Deploys' --calendar 'dana.merrick@postmates.com' agenda"
+        - tmux clock-mode -t 2
         - clear; neofetch
   # other examples:
   #- server: bundle exec rails s
