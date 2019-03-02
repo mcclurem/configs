@@ -14,7 +14,7 @@ fi
 export PATH=$PATH:$HOME/bin:/sbin:/usr/sbin
 
 # RVM settings
-[[ -s ~/.rvm/scripts/rvm ]] && source ~/.rvm/scripts/rvm
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 # if we have keychain then we rock
 if [ "$(which keychain 2>/dev/null)" ]; then
@@ -23,10 +23,12 @@ fi
 
 # os x stuff here
 if [ $(uname) == 'Darwin' ]; then
-  # Adding an appropriate PATH variable for use with MacPorts.
-  export PATH=/opt/local/bin:/opt/local/sbin:$PATH
   # Adding an appropriate PATH variable for use with Homebrew.
   export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+  # Adding gnutils path
+  export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+  # since I hardcoded golang
+  export PATH="/usr/local/opt/go@1.10/bin:$PATH"
   # Adding an appropriate MANPATH variable for use with MacPorts.
   export MANPATH=/opt/local/share/man:$MANPATH
 
@@ -71,6 +73,9 @@ export EDITOR=`which vim`
 # sensitive or host-specific data goes in here
 [ -f ~/.bash_profile.private ] && source ~/.bash_profile.private
 
+#TODO: finish adding this
+# [ -f ~/.oh-my-bash.sh ] && source ~/.oh-my-bash.sh
+
 # load git-prompt if available, else use .bash_prompt
 if [ -f ~/other_projects/git-prompt/git-prompt.sh ]; then
   # mkdir -p ~/other_projects
@@ -86,6 +91,7 @@ fi
 [ -f /etc/bash_completion ] && source /etc/bash_completion
 [ -f /opt/local/etc/bash_completion ] && source /opt/local/etc/bash_completion
 [ -f /etc/profile.d/bash-completion.sh ] && source /etc/profile.d/bash-completion.sh
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && source "/usr/local/etc/profile.d/bash_completion.sh"
 if we_have brew; then
   # this is the old style
   [ -f $(brew --prefix)/share/bash-completion/bash_completion ] && source $(brew --prefix)/share/bash-completion/bash_completion
