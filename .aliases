@@ -273,4 +273,6 @@ alias f="find . -name"
 # top 5 biggest files in current dir
 alias bigfiles="du -hs * | sort -rh | head -5"
 
+alias mux='tmuxinator'
+
 
