@@ -60,7 +60,7 @@ shopt -s cmdhist
 shopt -s checkwinsize
 
 # set vim as the default editor
-export EDITOR=`which vim`
+export EDITOR=$(which vim)
 
 # source aliases
 [ -f ~/.aliases ] && source ~/.aliases
