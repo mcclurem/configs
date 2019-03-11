@@ -124,8 +124,3 @@ bind Space:magic-space
 #   echo -e "$(uname -a)"> ~/.plan
 # fi
 
-export PATH=/usr/texbin:"$PATH"
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
