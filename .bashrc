@@ -27,8 +27,6 @@ if [ $(uname) == 'Darwin' ]; then
   export PATH=/usr/local/bin:/usr/local/sbin:$PATH
   # Adding gnutils path
   export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-  # since I hardcoded golang
-  export PATH="/usr/local/opt/go@1.10/bin:$PATH"
   # Adding an appropriate MANPATH variable for use with MacPorts.
   export MANPATH=/opt/local/share/man:$MANPATH
 
@@ -62,13 +60,11 @@ shopt -s checkwinsize
 # set vim as the default editor
 export EDITOR=$(which vim)
 
+# grep color options
+export GREP_COLOR='1;32'
+
 # source aliases
 [ -f ~/.aliases ] && source ~/.aliases
-
-# source alias.sh aliases
-[ -f ~/.aliases.sh ] && source ~/.aliases.sh
-# curl https://alias.sh/user/296/alias >> ~/.aliases.sh
-#source <(wget -q -O - "$@" https://alias.sh/user/296/alias)
 
 # sensitive or host-specific data goes in here
 [ -f ~/.bash_profile.private ] && source ~/.bash_profile.private
@@ -81,20 +77,18 @@ if [ -f ~/other_projects/git-prompt/git-prompt.sh ]; then
   # mkdir -p ~/other_projects
   # git clone https://github.com/dmerrick/git-prompt.git ~/other_projects/git-prompt
   source ~/other_projects/git-prompt/git-prompt.sh
-elif [ -f ~/.bash_prompt ]; then
-  source ~/.bash_prompt
+elif [ -f ~/.bash_default_prompt ]; then
+  source ~/.bash_default_prompt
 else
+  # fall back to very basic prompt
   PS1='$PWD > '
 fi
 
 # source bash completion
 [ -f /etc/bash_completion ] && source /etc/bash_completion
-[ -f /opt/local/etc/bash_completion ] && source /opt/local/etc/bash_completion
+[ -f /usr/local/etc/profile.d/bash_completion.sh ] && source /usr/local/etc/profile.d/bash_completion.sh
 [ -f /etc/profile.d/bash-completion.sh ] && source /etc/profile.d/bash-completion.sh
-[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && source "/usr/local/etc/profile.d/bash_completion.sh"
 if we_have brew; then
-  # this is the old style
-  [ -f $(brew --prefix)/share/bash-completion/bash_completion ] && source $(brew --prefix)/share/bash-completion/bash_completion
   [ -f $(brew --prefix)/etc/bash_completion ] && source $(brew --prefix)/etc/bash_completion
 fi
 
@@ -113,23 +107,25 @@ fi
 # enable tab complete for sudo
 complete -cf sudo
 
-# set up simple .plan (for finger utility)
-if [ $(uname) != 'Darwin' ]; then
-  echo -e "$(uname -a)"> ~/.plan
-fi
-
 # auto-expand history
 bind Space:magic-space
 
-# grep color options
-export GREP_COLOR='1;32'
-
 # from pancake .bashrc
 # enables ^s and ^q in rTorrent, when running in screen
-stty -ixon -ixoff
+# stty -ixon -ixoff
+
+# source alias.sh aliases
+# [ -f ~/.aliases.sh ] && source ~/.aliases.sh
+# curl https://alias.sh/user/296/alias >> ~/.aliases.sh
+#source <(wget -q -O - "$@" https://alias.sh/user/296/alias)
+
+# set up simple .plan (for finger utility)
+# if [ $(uname) != 'Darwin' ]; then
+#   echo -e "$(uname -a)"> ~/.plan
+# fi
 
 export PATH=/usr/texbin:"$PATH"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
