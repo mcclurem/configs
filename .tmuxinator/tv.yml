@@ -1,0 +1,13 @@
+# ~/.tmuxinator/tv.yml
+
+name: tv
+root: ~
+
+windows:
+  - primary:
+    - clear; neofetch.sh
+  - secondary:
+    - clear
+  - rclone:
+    - clear; rclone.sh
+
