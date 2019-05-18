@@ -28,8 +28,12 @@ Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'godlygeek/tabular'
+Plugin 'fatih/vim-go'
 call vundle#end()
 filetype plugin indent on " required by Vundle
+
+" auto-run goimports (and gofmt) on save
+let g:go_fmt_command = "goimports"
 
 " map spacebar as the leader key
 let mapleader = "\<Space>"
