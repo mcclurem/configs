@@ -16,3 +16,6 @@
 --ignore-dir=node_modules
 --ignore-dir=coverage
 --ignore-dir=vendor
+
+--ignore-dir=assets
+--ignore-dir=.terraform
