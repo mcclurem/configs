@@ -1,17 +1,20 @@
 [user]
-	name = Dana Merrick
-	email = dana.merrick@postmates.com
-
+  name = Dana Merrick
+  email = dana.merrick@postmates.com
 [color]
   ui = auto
-
 [core]
-  excludesfile = /Users/dmerrick/.gitignore.global
+  excludesfile = ~/.gitignore.global
+[push]
+  default = simple
+[help]
+  autocorrect = 20
+[http]
+  cookiefile = ~/.gitcookies
 
 [difftool "sourcetree"]
   cmd = opendiff \"$LOCAL\" \"$REMOTE\"
   path = 
-
 [mergetool "sourcetree"]
   cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
   trustExitCode = true
@@ -54,8 +57,3 @@
 
   ours   = "!f() { git checkout --ours $@ && git add $@; }; f"
   theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
-
-[push]
-	default = simple
-[help]
-	autocorrect = 1
