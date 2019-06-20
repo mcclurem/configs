@@ -29,6 +29,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'godlygeek/tabular'
 Plugin 'fatih/vim-go'
+Plugin 'google/vim-jsonnet'
 call vundle#end()
 filetype plugin indent on " required by Vundle
 
