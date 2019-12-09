@@ -35,7 +35,7 @@ if [ $(uname) == 'Darwin' ]; then
   export LSCOLORS=FxFxCxDxBxegedabagacfH # pretty much only for the last 2 chars
 
   # needed for SSD drives
-  ulimit -n 8192
+  # ulimit -n 8192
 fi
 
 # history crap
