@@ -35,7 +35,7 @@ if [ $(uname) == 'Darwin' ]; then
   export LSCOLORS=FxFxCxDxBxegedabagacfH # pretty much only for the last 2 chars
 
   # needed for SSD drives
-  ulimit -n 1024
+  ulimit -n 8192
 fi
 
 # history crap
@@ -124,3 +124,10 @@ bind Space:magic-space
 #   echo -e "$(uname -a)"> ~/.plan
 # fi
 
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

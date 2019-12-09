@@ -7,6 +7,14 @@
 # yes, this could be a lot more elegant in ruby or python
 # it's in bash so the project has less hard dependencies
 
+#TODO:
+# 
+# The file base16-railscasts.vim didn't exist so a symlink was created.
+# The file com.googlecode.iterm2.plist didn't exist so a symlink was created.
+# The file mtmr.json didn't exist so a symlink was created.
+# The file my-mtmr.json didn't exist so a symlink was created.
+# The file railscasts-iterm-color-scheme.itermcolors didn't exist so a symlink was created.
+
 if [ $# != 0 ] && [ $1 == "update" ]; then
   git pull --rebase
   exit 0

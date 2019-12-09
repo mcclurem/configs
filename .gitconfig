@@ -36,7 +36,7 @@
   l = log
 
   # shows the branches most recently committed-to
-  recent = !git for-each-ref --sort=committerdate refs/heads/ --format='%(committerdate:short) %(refname:short)' | tail -r | egrep -v '(production|master|release)' | head -5
+  recent = !git for-each-ref --sort=committerdate refs/heads/ --format='%(committerdate:short) %(refname:short)' | tac | egrep -v '(production|master|release)' | head -5
 
   pr = pull --rebase
   pom = push origin master
@@ -57,3 +57,5 @@
 
   ours   = "!f() { git checkout --ours $@ && git add $@; }; f"
   theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
+[url "git@github.com:"]
+	insteadOf = https://github.com/

@@ -28,7 +28,8 @@ g() {
 # os x only
 if [ `uname` == 'Darwin' ];
 then
-  alias ls='ls -G'
+  # alias ls='ls -G'
+  alias ls='lsd'
 
   # tried-and-true rsync options
   RSYNC_CMD="/usr/local/bin/rsync -v -madPhi --no-p --no-t --append-verify"
