@@ -28,8 +28,9 @@ Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'godlygeek/tabular'
-Plugin 'fatih/vim-go'
+Plugin 'fatih/vim-go' " install with :GoInstallBinaries
 Plugin 'google/vim-jsonnet'
+Plugin 'AndrewRadev/splitjoin.vim'
 call vundle#end()
 filetype plugin indent on " required by Vundle
 
@@ -100,6 +101,11 @@ noremap <leader>bd :Bclose<CR>  " Close the buffer.
 noremap <leader>bx :Bclose!<CR> " Close the buffer & discard changes.
 
 " railscasts color scheme
+" to install:
+"  $ git clone https://github.com/chrishunt/color-schemes.git
+"  $ cd color-schemes
+"  $ mkdir -p ~/.vim/colors
+"  $ cp railscasts/base16-railscasts.vim ~/.vim/colors/
 set background=dark
 colorscheme base16-railscasts
 
@@ -145,3 +151,20 @@ set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusl
 " to debug youcompleteme
 let g:ycm_server_keep_logfiles = 1
 let g:ycm_server_log_level = 'debug'
+
+" these are syntax highlighting options for vim-go
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+
+" run the linters on autosave
+let g:go_metalinter_autosave = 1
+" I took out golint, add it back?
+let g:go_metalinter_autosave_enabled = ['vet', 'errcheck']
+
+" this could be useful with :GoBuild but are there more implications?
+"set autowrite
+
