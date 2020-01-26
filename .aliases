@@ -42,12 +42,14 @@ then
 
   # tip: pass --dry-run or --bwlimit=KBPS or --stats
   sync_tv() {
+     DATA_DIR="/Volumes/Shadyglen"
     [ ! -d $DATA_DIR ] && echo $NODATAMSG && return 1
     cd $DATA_DIR && \
     $RSYNC_CMD --exclude-from=.exclude_all_but_video $@ \
     seedbox:files/"TV\ Shows" files/
   }
   sync_tv_b() {
+     DATA_DIR="/Volumes/Shadyglen"
     [ ! -d $DATA_DIR ] && echo $NODATAMSG && return 1
     cd $DATA_DIR && \
     $RSYNC_CMD --exclude-from=.exclude_all_but_video $@ \
@@ -55,6 +57,7 @@ then
   }
 
   sync_movies() {
+  DATA_DIR="/Volumes/Leeroy"
     [ ! -d $DATA_DIR ] && echo $NODATAMSG && return 1
     cd $DATA_DIR && \
     $RSYNC_CMD --exclude-from=.exclude_all_but_video $@ \
@@ -62,6 +65,7 @@ then
   }
 
   sync_music() {
+  DATA_DIR="/Volumes/Leeroy"
     [ ! -d $DATA_DIR ] && echo $NODATAMSG && return 1
     cd $DATA_DIR && \
     $RSYNC_CMD --exclude-from=.exclude_all_but_audio $@ \
@@ -69,6 +73,7 @@ then
   }
 
   sync_audiobooks() {
+  DATA_DIR="/Volumes/Leeroy"
     [ ! -d $DATA_DIR ] && echo $NODATAMSG && return 1
     cd $DATA_DIR && \
     $RSYNC_CMD $@ \
@@ -76,6 +81,7 @@ then
   }
 
   sync_books() {
+  DATA_DIR="/Volumes/Leeroy"
     [ ! -d $DATA_DIR ] && echo $NODATAMSG && return 1
     cd $DATA_DIR && \
     $RSYNC_CMD $@ \
@@ -83,6 +89,7 @@ then
   }
 
   sync_other() {
+  DATA_DIR="/Volumes/Leeroy"
     [ ! -d $DATA_DIR ] && echo $NODATAMSG && return 1
     cd $DATA_DIR && \
     $RSYNC_CMD $@ \
@@ -90,17 +97,10 @@ then
   }
 
   sync_youtube() {
+  DATA_DIR="/Volumes/Leeroy"
     [ ! -d $DATA_DIR ] && echo $NODATAMSG && return 1
     cd $DATA_DIR/YouTube && \
     ./download.sh
-  }
-
-  # be careful with this
-  sync_all() {
-    [ ! -d $DATA_DIR ] && echo $NODATAMSG && return 1
-    cd $DATA_DIR && \
-    $RSYNC_CMD --dry-run $@ \
-    seedbox:files .
   }
 
   check_all() {
