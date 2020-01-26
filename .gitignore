@@ -1,3 +1,4 @@
 .bash_profile.private
 old_configs
 .vim/bundle
+.vim/colors
