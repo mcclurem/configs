@@ -24,15 +24,6 @@ windows:
       pre: export IGNOREEOF=3
       panes:
         - clear; neofetch
-  - rotators:
-      # ignore the first few CTRL-Ds (to prevent accidental closing)
-      pre: export IGNOREEOF=3
-      # two panes at the top, one big one at the bottom
-      layout: fa9d,191x90,0,0[191x15,0,0{95x15,0,0,0,95x15,96,0,2},191x74,0,16,3]
-      panes:
-        - cd ~/other_projects/danalol-stream && ./bin/generate-left-msg.rb
-        - cd ~/other_projects/danalol-stream && ./bin/generate-right-msg.rb
-        - cd ~/other_projects/danalol-stream && ./bin/generate-leaderboard.sh
   - tripbot:
       # ignore the first few CTRL-Ds (to prevent accidental closing)
       pre: export IGNOREEOF=3
@@ -46,7 +37,7 @@ windows:
           - cd ~/other_projects/danalol-stream && tail -F log/bot.log
   - mopidy:
       panes:
-        - mopidy
-  # other examples:
-  #- server: bundle exec rails s
-  #- logs: tail -f log/development.log
+        - mopidys || exit
+  - irc:
+      panes:
+        - irssi
