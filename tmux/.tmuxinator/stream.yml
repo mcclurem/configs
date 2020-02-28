@@ -1,7 +1,7 @@
-# ~/.tmuxinator/workspace.yml
+# ~/.tmuxinator/stream.yml
 
 name: stream
-root: ~/
+root: ~/other_projects/danalol-stream
 
 # Optional tmux socket
 # socket_name: workspace
@@ -30,14 +30,15 @@ windows:
       # two panes at the top, one big one at the bottom
       layout: fa9d,191x90,0,0[191x15,0,0{95x15,0,0,0,95x15,96,0,2},191x74,0,16,3]
       panes:
-        - cd ~/other_projects/danalol-stream && go run cmd/tripbot/tripbot.go >> log/bot.log 2>&1
-        - cd ~/other_projects/danalol-stream && ./bin/start-obs.sh
+        - nice -n "-15" go run cmd/tripbot/tripbot.go >> log/bot.log 2>&1
+        - nice -n "-15" ./bin/start-obs.sh
         - pane_with_multiple_commands:
           - clear
-          - cd ~/other_projects/danalol-stream && tail -F log/bot.log
+          - tail -F log/bot.log
   - mopidy:
       panes:
         - nice -n "-15" mopidy || exit
+        - nice -n "-15" go run cmd/vlc-server/vlc-server.go | tee -a log/vlc.log 2>&1
   - irc:
       panes:
         - irssi
