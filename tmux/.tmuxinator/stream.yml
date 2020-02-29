@@ -35,10 +35,12 @@ windows:
         - pane_with_multiple_commands:
           - clear
           - tail -F log/bot.log
-  - mopidy:
+  - media:
       panes:
+        # try and start mopidy
         - nice -n "-15" mopidy || exit
-        - nice -n "-15" go run cmd/vlc-server/vlc-server.go | tee -a log/vlc.log 2>&1
+        # try and start vlc-server
+        - nice -n "-15" go run cmd/vlc-server/vlc-server.go || exit | tee -a log/vlc.log 2>&1
   - irc:
       panes:
         - irssi
