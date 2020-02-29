@@ -10,8 +10,16 @@ For a complete guide on setting up a Mac, see [Dana's Workstation Runlist](https
 
 * Clone this repo into your homedir
 * `cd ~/configs`
-* Optional: `./setup.sh update`
-* `./setup.sh`
+* Make sure we have [GNU Stow](https://www.gnu.org/software/stow/)
+  * `brew install stow  # or apt or whatever`
+* `stow bash git ruby tmux vim other`
+
+
+## Migrating from setup.sh to GNU Stow
+* Find the files we need to remove
+  * `stow bash git ruby tmux vim other 2>&1 | awk '/not owned/ {print $NF}'`
+* Remove those files
+* Install using instructions above
 
 
 ## How to Update
