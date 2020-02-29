@@ -40,7 +40,7 @@ windows:
         # try and start mopidy
         - nice -n "-15" mopidy || exit
         # try and start vlc-server
-        - nice -n "-15" go run cmd/vlc-server/vlc-server.go || exit | tee -a log/vlc.log 2>&1
+        - set -o pipefail && nice -n "-15" go run cmd/vlc-server/vlc-server.go || exit | tee -a log/vlc.log 2>&1
   - irc:
       panes:
         - irssi
