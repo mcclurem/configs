@@ -3,6 +3,8 @@
 name: workspace
 root: ~/
 
+# consider adding: cal -3 -m 3
+
 # Optional tmux socket
 # socket_name: workspace
 
