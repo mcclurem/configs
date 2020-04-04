@@ -276,5 +276,7 @@ alias bigfiles="du -hs * | sort -rh | head -5"
 
 alias mux='tmuxinator'
 
+alias workspace="tmuxinator start workspace"
+
 # good idea:
 # cd ~/other projects && git cl ___
