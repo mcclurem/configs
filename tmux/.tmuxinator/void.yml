@@ -1,0 +1,31 @@
+# ~/.tmuxinator/void.yml
+
+name: void
+root: ~/
+
+# consider adding: cal -3 -m 3
+
+windows:
+  - primary:
+      # ignore the first few CTRL-Ds (to prevent accidental closing)
+      pre: export IGNOREEOF=3
+      # two panes at the top, one big one at the bottom
+      layout: fa9d,191x90,0,0[191x15,0,0{95x15,0,0,0,95x15,96,0,2},191x74,0,16,3]
+      panes:
+        - pane_with_multiple_commands:
+          - clear
+          #- fortune | cowsay | lolcat
+        - tmux clock-mode -t 2
+        - tmux select-pane -t %4; clear; neofetch
+  - secondary:
+      # ignore the first few CTRL-Ds (to prevent accidental closing)
+      pre: export IGNOREEOF=3
+      # two panes at the top, one big one at the bottom
+      layout: fa9d,191x90,0,0[191x15,0,0{95x15,0,0,0,95x15,96,0,2},191x74,0,16,3]
+      panes:
+        - clear
+        - tmux clock-mode -t 2
+        - clear; neofetch
+  # other examples:
+  #- server: bundle exec rails s
+  #- logs: tail -f log/development.log
