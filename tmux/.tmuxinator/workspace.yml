@@ -8,6 +8,7 @@ root: ~/
 # Optional tmux socket
 # socket_name: workspace
 
+#TODO: consider running keychain here?
 # Runs before everything. Use it to start daemons etc.
 # pre: sudo /etc/rc.d/mysqld start
 
