@@ -1,22 +1,9 @@
-# ~/.tmuxinator/workspace.yml
+# ~/.tmuxinator/void.yml
 
-name: workspace
+name: void
 root: ~/
 
 # consider adding: cal -3 -m 3
-
-# Optional tmux socket
-# socket_name: workspace
-
-#TODO: consider running keychain here?
-# Runs before everything. Use it to start daemons etc.
-# pre: sudo /etc/rc.d/mysqld start
-
-# Runs in each window and pane before window/pane specific commands.
-# pre_window: export IGNOREEOF=5
-
-# Pass command line options to tmux. Useful for specifying a different tmux.conf.
-# tmux_options: -f ~/.tmux.mac.conf
 
 windows:
   - primary:
@@ -27,7 +14,6 @@ windows:
       panes:
         - pane_with_multiple_commands:
           - clear
-          - cd ~/other_projects/danalol && bundle exec middleman server
           #- fortune | cowsay | lolcat
         - tmux clock-mode -t 2
         - tmux select-pane -t %4; clear; neofetch
@@ -37,9 +23,7 @@ windows:
       # two panes at the top, one big one at the bottom
       layout: fa9d,191x90,0,0[191x15,0,0{95x15,0,0,0,95x15,96,0,2},191x74,0,16,3]
       panes:
-        # update every 24 hours
-        # to install: pip install gcalcli
-        - watch -t -c -n 86400 "gcalcli --calendar 'Migrations and Deploys' --calendar 'dana.merrick@postmates.com' agenda"
+        - clear
         - tmux clock-mode -t 2
         - clear; neofetch
   # other examples:
