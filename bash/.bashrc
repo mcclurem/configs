@@ -34,8 +34,8 @@ if [ $(uname) == 'Darwin' ]; then
   export CLICOLOR=1
   export LSCOLORS=FxFxCxDxBxegedabagacfH # pretty much only for the last 2 chars
 
-  # needed for SSD drives
-  # ulimit -n 8192
+  # enable iterm2 shell integration
+  [ -f ~/.iterm2_shell_integration.bash ] && source ~/.iterm2_shell_integration.bash
 fi
 
 # history crap
@@ -92,10 +92,6 @@ if we_have brew; then
   [ -f $(brew --prefix)/etc/bash_completion ] && source $(brew --prefix)/etc/bash_completion
 fi
 
-# enable git completion
-#NOTE: does not currently work with g() shortcut
-[ -f ~/.git-completion.bash ] && source ~/.git-completion.bash
-
 # enable ssh completion
 if [ -f ~/.ssh/config ]; then
   function _ssh_completion() {
@@ -123,11 +119,3 @@ bind Space:magic-space
 # if [ $(uname) != 'Darwin' ]; then
 #   echo -e "$(uname -a)"> ~/.plan
 # fi
-
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
