@@ -40,6 +40,8 @@ if [ "$(which keychain 2>/dev/null)" ]; then
 	eval `keychain --ignore-missing -q --eval ~/.ssh/id_rsa ~/.ssh/id_dsa`
 fi
 
+ssh-add --apple-load-keychain
+
 if [ "$DISPLAY" ]; then
 	if [ "$(which tpb 2>/dev/null)" ]; then
 		tpb -d &
@@ -59,13 +61,6 @@ AppendPath "/bin"
 AppendPath "/usr/sbin"
 AppendPath "/usr/bin"
 
-#Arm Development stuff
-AppendPath "$HOME/local/yagarto/yagarto-4.6.0/bin"
-AppendPath "$HOME/local/yagarto/yagarto-4.6.0/tools"
-AppendPath "$HOME/local/src/ct/bin"
-#Linux Arm dev stuff
-AppendPath "$HOME/local/arm/bin"
-
 AppendPath "$HOME/altera/13.0/quartus/bin"
 
 AppendPath "/usr/NX/bin"
@@ -73,48 +68,14 @@ AppendPath "/usr/NX/bin"
 #Mac specific path settings
 if [ `uname` == 'Darwin' ]; then
     echo "DARWIN"
-    #Macports stuff
-	# Adding an appropriate PATH variable for use with MacPorts.
-	PrependPath "/Users/mcclurem/.gem/ruby/1.8/bin"
-    PrependPath "/opt/local/sbin"
-    PrependPath "/opt/local/bin"
-    AppendPath "/Users/mcclurem/local/avr/bin"
-    #yagarto arm toolchain
-    AppendPath "$HOME/local/yagarto/yagarto-4.6.0/bin"
-    AppendPath "$HOME/local/yagarto/yagarto-4.6.0/tools"
-    AppendPath "$HOME/local/src/ct/bin"
-    #Texlive support
-	PrependPath "/usr/local/texlive/2011/bin/x86_64-darwin"
-	# Adding an appropriate MANPATH variable for use with MacPorts.
-	PrependPath MANPATH "/opt/local/share/man"
-    #Macports installs mysql to a dumb location
-    AppendPath "/opt/local/lib/mysql5/bin"
-    AppendPath "/opt/local/lib/mysql55/bin"
     # Manpath for gnuutils
     PrependPath MANPATH "/opt/homebrew/opt/coreutils/libexec/gnuman"
     #GNU utils are good
     PrependPath "/opt/local/libexec/gnubin"
     PrependPath "/opt/homebrew/bin"
     PrependPath "/opt/homebrew/opt/coreutils/libexec/gnubin"
-    PrependPath "/opt/homebrew/share/python"
-    # Now edit the pythonpath
-    #Path for MacPorts
-	AppendPath PYTHONPATH "/opt/local/lib/python/site-packages"
-    AppendPath PYTHONPATH "/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/site-packages"
-    AppendPath PYTHONPATH "/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages"
-    #Path for homebrew
-    AppendPath PYTHONPATH "/opt/homebrew/lib/python2.7/site-packages"
-    PrependPath "/Applications/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin"
 fi
 
-NSCRIPTPYROOT="$HOME/nscript/Python2.7"
-#PrependPath PYTHONPATH "$NSCRIPTPYROOT/lib/python2.7/site-packages"
-#PrependPath PYTHONPATH "$NSCRIPTPYROOT/lib/python2.7"
-
-#PrependPath LD_LIBRARY_PATH "$NSCRIPTPYROOT/lib/extra_libs"
-#PrependPath LD_LIBRARY_PATH "$NSCRIPTPYROOT/lib/python2.7/site-packages/nimbic"
-#PrependPath LD_LIBRARY_PATH "$NSCRIPTPYROOT/lib"
-#PrependPath LD_LIBRARY_PATH "$HOME/nscript/lib"
 
 # Get the aliases and functions
 if [ -f ~/.bashrc ]; then
@@ -158,3 +119,4 @@ if [ -f ~/.bash_profile_local ]; then
     source ~/.bash_profile_local
 fi
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
