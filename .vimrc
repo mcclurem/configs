@@ -6,6 +6,7 @@ set tags=tags;~/
 colorscheme peachpuff
 augroup filetype
     au! BufRead,BufNewFile *.bash*          set filetype=sh
+    au! BufRead,BufNewFile *.ax,*astrisrc   set filetype=tcl
     au! BufRead,BufNewFile *.pde            set filetype=c
     au! BufRead,BufNewFile *.thtml          set filetype=php
     au! BufRead,BufNewFile *.jobdesc        set filetype=php
